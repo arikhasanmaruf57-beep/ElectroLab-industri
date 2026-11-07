@@ -75,19 +75,32 @@ const PHYSICAL_DIR = path.join(ROOT, 'public/assets/physical');
 const MAX_IMAGE_BYTES = 8 * 1024 * 1024;
 const ALLOWED_LICENSES = new Set<LicenseCode>(['cc0', 'pdm', 'by', 'by-sa']);
 
-const SEARCH_TERMS: Record<string, string> = {
-  'mcb-1p': 'miniature circuit breaker MCB front product photo',
-  'mcb-2p': 'double pole miniature circuit breaker front product photo',
-  'mcb-3p': 'three pole miniature circuit breaker front product photo',
-  'mccb-3p': 'molded case circuit breaker front product photo',
-  'rccb-2p': 'residual current circuit breaker RCCB front product photo',
-  'contactor-3p': 'three pole magnetic contactor front product photo screw terminals',
-  'pb-start-no': 'industrial green push button normally open contact block',
-  'pb-stop-nc': 'industrial red push button normally closed contact block',
-  estop: 'industrial emergency stop mushroom push button contact block',
-  'motor-3p-6t': 'three phase induction motor terminal box six terminals',
-  'motor-3p-3t': 'three phase induction motor terminal box',
-  'overload-relay': 'thermal overload relay front product photo terminals',
+/**
+ * Openverse performs better with short, separate phrases than long product-photo queries.
+ * Results are candidates only; a human must verify the exact product, terminals and rights.
+ */
+const SEARCH_TERMS: Record<string, string[]> = {
+  'ac-1p-source': ['single phase electricity', 'single phase power supply', 'electrical outlet'],
+  'ac-3p-source': ['three phase electricity', 'three phase power supply'],
+  'dc-supply': ['DC power supply', 'direct current power supply'],
+  'power-supply-24v': ['24V power supply', 'industrial power supply'],
+  'control-transformer': ['control transformer', 'electrical transformer'],
+  battery: ['electrical battery', 'battery'],
+  'solar-panel': ['solar panel', 'photovoltaic panel'],
+  'generator-3p': ['electric generator', 'three phase generator'],
+  'ups-1p': ['uninterruptible power supply', 'UPS power supply'],
+  'mcb-1p': ['miniature circuit breaker', 'MCB', 'circuit breaker'],
+  'mcb-2p': ['double pole circuit breaker', 'miniature circuit breaker', 'circuit breaker'],
+  'mcb-3p': ['three pole circuit breaker', 'miniature circuit breaker', 'circuit breaker'],
+  'mccb-3p': ['molded case circuit breaker', 'MCCB', 'circuit breaker'],
+  'rccb-2p': ['residual current circuit breaker', 'RCCB', 'circuit breaker'],
+  'contactor-3p': ['magnetic contactor', 'electrical contactor', 'contactor'],
+  'pb-start-no': ['industrial push button', 'green push button', 'push button switch'],
+  'pb-stop-nc': ['industrial push button', 'red push button', 'push button switch'],
+  estop: ['emergency stop button', 'emergency stop switch', 'mushroom push button'],
+  'motor-3p-6t': ['three phase induction motor', 'electric motor terminal box', 'induction motor'],
+  'motor-3p-3t': ['three phase induction motor', 'electric motor terminal box', 'induction motor'],
+  'overload-relay': ['thermal overload relay', 'overload relay', 'motor protection relay'],
 };
 
 const OFFICIAL_REFERENCE_SOURCES = [
@@ -132,9 +145,10 @@ function safeSlug(value: string): string {
   return value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 70) || 'asset';
 }
 
-function queryFor(component: (typeof COMPONENTS)[number]): string {
-  return SEARCH_TERMS[component.type] ??
-    `${component.name} electrical component industrial product front view`;
+function queriesFor(component: (typeof COMPONENTS)[number]): string[] {
+  const configured = SEARCH_TERMS[component.type];
+  if (configured) return configured;
+  return [component.name, component.name + ' electrical component'];
 }
 
 function isAllowedLicense(license: string): license is LicenseCode {
@@ -155,19 +169,22 @@ async function searchOpenverse(query: string): Promise<OpenverseImage[]> {
     });
     if (response.ok) {
       const payload = await response.json() as { results?: OpenverseImage[] };
+      // Validate actual MIME type at download time; Openverse filetype metadata
+      // is inconsistent and should not silently discard discovery candidates.
       return (payload.results ?? []).filter((item) =>
         isAllowedLicense(item.license) &&
         typeof item.url === 'string' &&
         item.url.startsWith('https://') &&
-        (item.filetype === 'jpg' || item.filetype === 'jpeg' || item.filetype === 'png' || item.filetype === 'webp')
+        typeof item.foreign_landing_url === 'string' &&
+        item.foreign_landing_url.startsWith('https://')
       );
     }
     if (response.status !== 429 && response.status < 500) {
-      throw new Error(`Openverse returned HTTP ${response.status} for "${query}"`);
+      throw new Error('Openverse returned HTTP ' + response.status + ' for "' + query + '"');
     }
     await new Promise((resolve) => setTimeout(resolve, 1500 * (attempt + 1)));
   }
-  throw new Error(`Openverse request failed after retries: "${query}"`);
+  throw new Error('Openverse request failed after retries: "' + query + '"');
 }
 
 async function discover(): Promise<void> {
@@ -184,37 +201,50 @@ async function discover(): Promise<void> {
 
   console.log(`ElectroLab Asset Collector: searching ${targets.length} catalog components...`);
   for (const [index, component] of targets.entries()) {
-    const query = queryFor(component);
     try {
-      const results = await searchOpenverse(query);
-      for (const result of results) {
-        candidates.push({
-          id: `openverse-${result.id}-${component.type}`,
-          componentType: component.type,
-          componentName: component.name,
-          view: 'physical',
-          sourceType: 'openverse',
-          title: result.title,
-          imageUrl: result.url,
-          ...(result.thumbnail ? { previewUrl: result.thumbnail } : {}),
-          sourcePage: result.foreign_landing_url,
-          ...(result.creator ? { creator: result.creator } : {}),
-          ...(result.creator_url ? { creatorUrl: result.creator_url } : {}),
-          license: result.license,
-          ...(result.license_version ? { licenseVersion: result.license_version } : {}),
-          ...(result.license_url ? { licenseUrl: result.license_url } : {}),
-          ...(result.attribution ? { attribution: result.attribution } : {}),
-          ...(result.provider ? { provider: result.provider } : {}),
-          ...(result.width ? { width: result.width } : {}),
-          ...(result.height ? { height: result.height } : {}),
-          reviewStatus: 'needs-review',
-        });
+      const seen = new Set<string>();
+      let componentCount = 0;
+      const queries = queriesFor(component);
+
+      for (const query of queries) {
+        const results = await searchOpenverse(query);
+        for (const result of results) {
+          if (seen.has(result.id) || componentCount >= 8) continue;
+          seen.add(result.id);
+          candidates.push({
+            id: 'openverse-' + result.id + '-' + component.type,
+            componentType: component.type,
+            componentName: component.name,
+            view: 'physical',
+            sourceType: 'openverse',
+            title: result.title,
+            imageUrl: result.url,
+            ...(result.thumbnail ? { previewUrl: result.thumbnail } : {}),
+            sourcePage: result.foreign_landing_url,
+            ...(result.creator ? { creator: result.creator } : {}),
+            ...(result.creator_url ? { creatorUrl: result.creator_url } : {}),
+            license: result.license,
+            ...(result.license_version ? { licenseVersion: result.license_version } : {}),
+            ...(result.license_url ? { licenseUrl: result.license_url } : {}),
+            ...(result.attribution ? { attribution: result.attribution } : {}),
+            ...(result.provider ? { provider: result.provider } : {}),
+            ...(result.width ? { width: result.width } : {}),
+            ...(result.height ? { height: result.height } : {}),
+            reviewStatus: 'needs-review',
+          });
+          componentCount += 1;
+        }
+        if (componentCount >= 8) break;
+        if (queries.indexOf(query) < queries.length - 1) {
+          await new Promise((resolve) => setTimeout(resolve, 350));
+        }
       }
-      console.log(`[${index + 1}/${targets.length}] ${component.type}: ${results.length} candidates`);
+      console.log('[' + (index + 1) + '/' + targets.length + '] ' + component.type +
+        ': ' + componentCount + ' candidates from ' + queries.length + ' possible queries');
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
       failures.push({ componentType: component.type, error: message });
-      console.warn(`[${index + 1}/${targets.length}] ${component.type}: ${message}`);
+      console.warn('[' + (index + 1) + '/' + targets.length + '] ' + component.type + ': ' + message);
     }
     // Be polite to the free public API.
     if (index < targets.length - 1) await new Promise((resolve) => setTimeout(resolve, 1100));
@@ -224,7 +254,7 @@ async function discover(): Promise<void> {
   await writeFile(CANDIDATES_FILE, JSON.stringify({
     generatedAt: new Date().toISOString(),
     source: 'Openverse API',
-    licensePolicy: 'Only CC0, PDM, CC BY and CC BY-SA are listed. Every candidate still requires human review.',
+    licensePolicy: 'Only CC0, PDM, CC BY and CC BY-SA are listed. Search alternatives are queried separately; every candidate still requires human review.',
     officialReferenceSources: OFFICIAL_REFERENCE_SOURCES,
     scannedComponents: targets.map((component) => component.type),
     candidates,
