@@ -42,7 +42,7 @@ export const PROTECTION: ComponentSource[] = [
     text: 'MCB',
     description: 'Miniature Circuit Breaker satu kutub dengan pelepas termal dan magnetik.',
     fn: 'Memutus rangkaian saat arus lebih (overload) atau hubung singkat pada penghantar fase.',
-    specs: [spec('Arus nominal', '16', 'A'), spec('Tegangan nominal', '230', 'V'), spec('Kurva trip', 'C'), spec('Kapasitas pemutusan', '6', 'kA'), spec('Jumlah kutub', '1')],
+    specs: [spec('Spesifikasi teknis', 'Belum ditentukan'), spec('Jumlah kutub', '1')],
     phase: 4,
     tags: ['breaker', 'miniature circuit breaker', 'sekering otomatis'],
   }),
