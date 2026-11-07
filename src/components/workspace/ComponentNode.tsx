@@ -88,11 +88,13 @@ export function ComponentNode({ placed, def, selected, viewMode, connected, pend
               {state === 'ok' && <circle r={9} fill="none" stroke="var(--ok)" strokeWidth={2} />}
               {state === 'origin' && <circle r={9} fill="none" stroke="var(--accent)" strokeWidth={2} />}
               <circle r={4} fill={isConnected || state === 'origin' ? color : 'var(--body-fill)'} stroke={color} strokeWidth={1.6} />
-              <g transform={`translate(${lp.dx} ${lp.dy}) rotate(${-placed.rotation})`} pointerEvents="none">
-                <text textAnchor={lp.anchor} fontSize={8} fontWeight={600} fill="var(--symbol-dim)" stroke="var(--body-fill)" strokeWidth={2.5} paintOrder="stroke">
-                  {t.id}
-                </text>
-              </g>
+              {viewMode === 'schematic' && (
+                <g transform={`translate(${lp.dx} ${lp.dy}) rotate(${-placed.rotation})`} pointerEvents="none">
+                  <text textAnchor={lp.anchor} fontSize={8} fontWeight={600} fill="var(--symbol-dim)" stroke="var(--body-fill)" strokeWidth={2.5} paintOrder="stroke">
+                    {t.id}
+                  </text>
+                </g>
+              )}
             </g>
           );
         })}
