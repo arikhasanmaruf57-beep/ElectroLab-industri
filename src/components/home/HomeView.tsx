@@ -44,7 +44,7 @@ export function HomeView() {
               <span className="text-sm font-semibold tracking-tight">ElectroLab <span className="font-normal text-muted">/ Industri</span></span>
             </Link>
           </div>
-          <Link href="/dashboard" className="text-sm text-muted transition-colors hover:text-ink">Dashboard <span aria-hidden="true">↗</span></Link>
+          <Link href="/" className="text-sm text-muted transition-colors hover:text-ink">Beranda <span aria-hidden="true">↗</span></Link>
         </div>
       </header>
 
@@ -68,7 +68,7 @@ export function HomeView() {
               <div className="my-2 border-t border-line" />
               <p className="px-3 pb-2 pt-2 text-[11px] font-medium uppercase tracking-wider text-muted">Menu aplikasi</p>
               {NAV_ITEMS.map((item) => (
-                <Link key={item.href} href={item.href} onClick={closeMenu} className="flex h-10 items-center gap-3 rounded-md px-3 text-sm text-muted transition-colors hover:bg-raised hover:text-ink">
+                <Link key={item.href} href={item.href === '/dashboard' ? '/' : item.href} onClick={closeMenu} className="flex h-10 items-center gap-3 rounded-md px-3 text-sm text-muted transition-colors hover:bg-raised hover:text-ink">
                   <Icon name={item.icon} size={17} />
                   <span className="flex-1">{item.label}</span>
                   {item.phase && <span className="text-[11px] text-muted">Phase {item.phase}</span>}
