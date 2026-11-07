@@ -46,7 +46,7 @@ For each candidate, verify:
 
 Copy approved candidate records into \`src/data/assets/approved-assets.json\` and add \`"approved": true\`. For CC BY / CC BY-SA, keep a non-empty \`attribution\`. Do not approve assets whose rights are unclear.
 
-For official manufacturer media, use the same approved record format only after the specific asset's usage rights have been confirmed. The asset record must include source page, license/rights details and required credit. Never mark an asset approved merely because it appears on an official website.
+For official manufacturer media, add curated records to `src/data/assets/official-assets.json`. Use `sourceType: "manufacturer"`, `approved: true`, `rightsStatus: "approved"` and a non-empty `rightsEvidence` describing the applicable permission or license. Keep the exact source page, rights details and required credit. The downloader reads both approved lists. Never mark an asset approved merely because it appears on an official website.
 
 ## Download approved assets
 
@@ -60,4 +60,4 @@ The downloader accepts HTTPS images only, supports JPEG/PNG/WebP/AVIF, and limit
 
 An image being approved for use does not mean its terminal geometry is approved. Do not create terminal hotspots from guessed image coordinates. Record terminal IDs and normalized x/y positions only after checking the exact product model and a reliable front view/datasheet. A different product variant can have different terminal layout.
 
-The current MVP discovers image candidates and downloads approved image files. It does not yet automatically extract terminal coordinates, generate schematic symbols from photographs, or alter the component catalogue. Those require a later visual-review and terminal-mapping UI.
+The current MVP automatically discovers Openverse candidates and downloads approved Openverse or curated manufacturer images. Official manufacturer media is curated rather than scraped: some product catalog APIs require OAuth/onboarding, and each asset has its own usage rights. The collector does not yet automatically extract terminal coordinates, generate schematic symbols from photographs, or alter the component catalogue. Those require a later visual-review and terminal-mapping UI.
