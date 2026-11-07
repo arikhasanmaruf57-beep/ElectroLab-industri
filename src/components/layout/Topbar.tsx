@@ -1,7 +1,9 @@
 'use client';
 
+import { useState } from 'react';
+import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { navForPath } from '@/data/navigation';
+import { NAV_ITEMS, navForPath } from '@/data/navigation';
 import { isEmpty } from '@/store/workspace-store/document';
 import { useSettingsStore } from '@/store/settings-store';
 import { useWorkspaceStore } from '@/store/workspace-store';
@@ -12,12 +14,14 @@ import { Icon } from '../ui/Icon';
 export function Topbar() {
   const pathname = usePathname();
   const router = useRouter();
+  const [menuOpen, setMenuOpen] = useState(false);
   const mounted = useMounted();
   const theme = useSettingsStore((s) => s.theme);
   const toggleTheme = useSettingsStore((s) => s.toggleTheme);
   const savedAt = useWorkspaceStore((s) => s.savedAt);
   const newProject = useWorkspaceStore((s) => s.newProject);
-  const title = navForPath(pathname)?.title ?? 'Electrical Simulator';
+  const title = navForPath(pathname)?.title ?? 'ElectroLab Industri';
+  const isHome = pathname === '/';
 
   const onNew = () => {
     const doc = useWorkspaceStore.getState().doc;
@@ -26,29 +30,97 @@ export function Topbar() {
     router.push('/workspace');
   };
 
+  const closeMenu = () => setMenuOpen(false);
+
   return (
-    <header className="flex h-14 shrink-0 items-center gap-3 border-b border-line bg-surface px-5">
-      <h1 className="flex-1 truncate text-[15px] font-semibold">{title}</h1>
-      <span className="hidden text-xs text-muted sm:inline" data-testid="save-indicator">
-        {mounted && savedAt ? `Draf tersimpan ${formatTime(savedAt)}` : mounted ? 'Belum ada draf' : ''}
-      </span>
-      <button
-        type="button"
-        onClick={toggleTheme}
-        aria-label={theme === 'dark' ? 'Beralih ke mode terang' : 'Beralih ke mode gelap'}
-        title={theme === 'dark' ? 'Mode terang' : 'Mode gelap'}
-        className="flex size-9 items-center justify-center rounded-md border border-line text-muted hover:bg-raised hover:text-ink"
-      >
-        <Icon name={theme === 'dark' ? 'sun' : 'moon'} />
-      </button>
-      <button
-        type="button"
-        onClick={onNew}
-        className="flex h-9 items-center gap-2 rounded-md bg-accent px-3.5 text-sm font-medium text-accent-ink hover:brightness-110"
-      >
-        <Icon name="plus" size={16} />
-        Rangkaian baru
-      </button>
-    </header>
+    <>
+      <header className="relative z-40 flex h-16 shrink-0 items-center gap-3 border-b border-line bg-bg/95 px-4 backdrop-blur sm:px-7 lg:px-10">
+        <button
+          type="button"
+          onClick={() => setMenuOpen((open) => !open)}
+          aria-label={menuOpen ? 'Tutup menu navigasi' : 'Buka menu navigasi'}
+          aria-expanded={menuOpen}
+          className="flex size-9 shrink-0 items-center justify-center rounded-md border border-line text-muted transition-colors hover:bg-raised hover:text-ink"
+        >
+          {menuOpen ? <Icon name="x" size={18} /> : (
+            <span className="flex flex-col gap-1">
+              <span className="h-px w-4 bg-current" />
+              <span className="h-px w-4 bg-current" />
+              <span className="h-px w-4 bg-current" />
+            </span>
+          )}
+        </button>
+
+        <Link href="/" onClick={closeMenu} className="flex min-w-0 items-center gap-2.5">
+          <span className="flex size-8 shrink-0 items-center justify-center rounded-md bg-accent text-accent-ink"><Icon name="bolt" size={17} /></span>
+          <span className="truncate text-sm font-semibold tracking-tight">ElectroLab <span className="font-normal text-muted">/ Industri</span></span>
+        </Link>
+
+        <div className="mx-2 hidden h-6 w-px bg-line sm:block" />
+        <h1 className="hidden min-w-0 flex-1 truncate text-sm font-medium text-muted sm:block">{title}</h1>
+        <div className="flex-1 sm:hidden" />
+
+        {!isHome && (
+          <span className="hidden text-xs text-muted xl:inline" data-testid="save-indicator">
+            {mounted && savedAt ? `Draf tersimpan ${formatTime(savedAt)}` : mounted ? 'Belum ada draf' : ''}
+          </span>
+        )}
+        <button
+          type="button"
+          onClick={toggleTheme}
+          aria-label={theme === 'dark' ? 'Beralih ke mode terang' : 'Beralih ke mode gelap'}
+          title={theme === 'dark' ? 'Mode terang' : 'Mode gelap'}
+          className="flex size-9 shrink-0 items-center justify-center rounded-md border border-line text-muted hover:bg-raised hover:text-ink"
+        >
+          <Icon name={theme === 'dark' ? 'sun' : 'moon'} />
+        </button>
+        {!isHome && (
+          <button
+            type="button"
+            onClick={onNew}
+            className="flex h-9 shrink-0 items-center gap-2 rounded-md bg-accent px-3.5 text-sm font-medium text-accent-ink hover:brightness-110"
+          >
+            <Icon name="plus" size={16} />
+            <span className="hidden sm:inline">Rangkaian baru</span>
+            <span className="sm:hidden">Baru</span>
+          </button>
+        )}
+      </header>
+
+      {menuOpen && (
+        <div className="fixed inset-0 z-[60]">
+          <button type="button" aria-label="Tutup menu navigasi" onClick={closeMenu} className="absolute inset-0 bg-black/55" />
+          <aside className="absolute inset-y-0 left-0 flex w-[min(340px,88vw)] flex-col border-r border-line bg-surface shadow-2xl">
+            <div className="flex h-16 shrink-0 items-center justify-between border-b border-line px-5">
+              <Link href="/" onClick={closeMenu} className="flex items-center gap-2.5">
+                <span className="flex size-8 items-center justify-center rounded-md bg-accent text-accent-ink"><Icon name="bolt" size={17} /></span>
+                <span className="text-sm font-semibold">ElectroLab Industri</span>
+              </Link>
+              <button type="button" onClick={closeMenu} aria-label="Tutup menu navigasi" className="rounded-md p-2 text-muted hover:bg-raised hover:text-ink"><Icon name="x" /></button>
+            </div>
+            <nav className="scroll-thin flex-1 overflow-y-auto p-3">
+              <p className="px-3 pb-2 pt-1 text-[11px] font-medium uppercase tracking-wider text-muted">Navigasi utama</p>
+              {NAV_ITEMS.map((item) => {
+                const active = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href + '/'));
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={closeMenu}
+                    aria-current={active ? 'page' : undefined}
+                    className={`mb-1 flex h-10 items-center gap-3 rounded-md px-3 text-sm transition-colors ${active ? 'bg-raised font-medium text-ink' : 'text-muted hover:bg-raised hover:text-ink'}`}
+                  >
+                    <Icon name={item.icon} size={17} />
+                    <span className="flex-1">{item.label}</span>
+                    {item.phase && <span className="text-[11px] text-muted">Phase {item.phase}</span>}
+                  </Link>
+                );
+              })}
+            </nav>
+            <p className="shrink-0 border-t border-line px-5 py-4 text-[11px] leading-relaxed text-muted">Simulator pembelajaran. Hasil simulasi tidak menggantikan perhitungan desain dan pemeriksaan instalasi sesuai PUIL/SNI.</p>
+          </aside>
+        </div>
+      )}
+    </>
   );
 }
