@@ -4,14 +4,16 @@ import { useMemo, useState } from 'react';
 import { CATEGORIES } from '@/data/categories';
 import { searchComponents } from '@/data/components';
 import { useWorkspaceStore } from '@/store/workspace-store';
+import { useSettingsStore } from '@/store/settings-store';
 import type { CategoryId, ComponentDefinition } from '@/types/component';
 import { cn } from '@/utils/cn';
-import { SymbolPreview } from '../electrical-symbols/SymbolPreview';
+import { ComponentVisualPreview } from '../electrical-symbols/ComponentVisualPreview';
 import { LIBRARY_DRAG_TYPE } from '../workspace/WorkspaceCanvas';
 import { Icon } from '../ui/Icon';
 
 function Row({ def }: { def: ComponentDefinition }) {
   const add = useWorkspaceStore((s) => s.addComponentAtViewCenter);
+  const viewMode = useSettingsStore((s) => s.componentViewMode);
   return (
     <li>
       <div
@@ -33,7 +35,7 @@ function Row({ def }: { def: ComponentDefinition }) {
         }}
         className="group flex cursor-grab items-center gap-2.5 rounded-md px-2 py-1.5 hover:bg-raised active:cursor-grabbing"
       >
-        <SymbolPreview def={def} className="h-10 w-12 shrink-0 text-ink" />
+        <ComponentVisualPreview def={def} mode={viewMode} className="h-10 w-12 shrink-0 text-ink" />
         <span className="min-w-0 flex-1">
           <span className="block truncate text-[13px] font-medium">{def.name}</span>
           <span className="block truncate text-[11px] text-muted">{def.terminals.length} terminal · {def.designator}</span>
