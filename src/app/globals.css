@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+/* Token tema. Dark industrial adalah default; light adalah alternatif. */
+:root,
+[data-theme="dark"] {
+  --bg: #0e1115;
+  --surface: #151a20;
+  --raised: #1c232b;
+  --line: #28313b;
+  --ink: #e3e8ee;
+  --muted: #8995a3;
+  --accent: #3d8bfd;
+  --accent-ink: #ffffff;
+  --ok: #34c27a;
+  --warn: #e3b341;
+  --fault: #ef5350;
+  --canvas: #0b0e12;
+  --grid-dot: #26303a;
+  --symbol: #cdd7e2;
+  --symbol-dim: #7f8b99;
+  --body-fill: #141a21;
+  --wire-casing: rgba(205, 215, 226, 0.5);
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  --bg: #eef1f4;
+  --surface: #ffffff;
+  --raised: #f4f6f8;
+  --line: #d5dbe2;
+  --ink: #17202a;
+  --muted: #5d6a78;
+  --accent: #1f6feb;
+  --accent-ink: #ffffff;
+  --ok: #1a9d5c;
+  --warn: #b7860b;
+  --fault: #d33a37;
+  --canvas: #fbfcfd;
+  --grid-dot: #c9d1d9;
+  --symbol: #26323f;
+  --symbol-dim: #6b7886;
+  --body-fill: #ffffff;
+  --wire-casing: rgba(23, 32, 42, 0.45);
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-raised: var(--raised);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-ok: var(--ok);
+  --color-warn: var(--warn);
+  --color-fault: var(--fault);
+  --color-canvas: var(--canvas);
+  --font-sans: "Inter", "Segoe UI Variable", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", Consolas, monospace;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+}
+
+button:not(:disabled),
+[role="button"] {
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.scroll-thin {
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) transparent;
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes toast-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.toast-in { animation: toast-in 160ms ease-out; }
+
+@media (prefers-reduced-motion: reduce) {
+  .toast-in { animation: none; }
+}
