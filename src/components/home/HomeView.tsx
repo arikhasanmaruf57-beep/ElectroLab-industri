@@ -1,8 +1,4 @@
-'use client';
-
-import { useState } from 'react';
 import Link from 'next/link';
-import { NAV_ITEMS } from '@/data/navigation';
 import { Icon } from '@/components/ui/Icon';
 
 const areas = [
@@ -15,71 +11,8 @@ const areas = [
 ];
 
 export function HomeView() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const toggleMenu = () => setMenuOpen((open) => !open);
-  const closeMenu = () => setMenuOpen(false);
-
   return (
     <div className="min-h-screen w-full bg-bg">
-      <header className="sticky top-0 z-30 border-b border-line bg-bg/95 backdrop-blur">
-        <div className="flex h-16 w-full items-center justify-between px-4 sm:px-7 lg:px-10 2xl:px-14">
-          <div className="flex items-center gap-3">
-            <button
-              type="button"
-              onClick={toggleMenu}
-              aria-label={menuOpen ? 'Tutup menu navigasi' : 'Buka menu navigasi'}
-              aria-expanded={menuOpen}
-              className="flex size-9 items-center justify-center rounded-md border border-line text-muted transition-colors hover:bg-raised hover:text-ink"
-            >
-              {menuOpen ? <Icon name="x" size={18} /> : (
-                <span className="flex flex-col gap-1">
-                  <span className="h-px w-4 bg-current" />
-                  <span className="h-px w-4 bg-current" />
-                  <span className="h-px w-4 bg-current" />
-                </span>
-              )}
-            </button>
-            <Link href="/" onClick={closeMenu} className="flex items-center gap-2.5">
-              <span className="flex size-8 items-center justify-center rounded-md bg-accent text-accent-ink"><Icon name="bolt" size={17} /></span>
-              <span className="text-sm font-semibold tracking-tight">ElectroLab <span className="font-normal text-muted">/ Industri</span></span>
-            </Link>
-          </div>
-          <Link href="/" className="text-sm text-muted transition-colors hover:text-ink">Beranda <span aria-hidden="true">↗</span></Link>
-        </div>
-      </header>
-
-      {menuOpen && (
-        <div className="fixed inset-0 z-50">
-          <button type="button" aria-label="Tutup menu" onClick={closeMenu} className="absolute inset-0 bg-black/55" />
-          <aside className="relative flex h-full w-[min(320px,88vw)] flex-col border-r border-line bg-surface shadow-2xl">
-            <div className="flex h-16 items-center justify-between border-b border-line px-5">
-              <div className="flex items-center gap-2.5">
-                <span className="flex size-8 items-center justify-center rounded-md bg-accent text-accent-ink"><Icon name="bolt" size={17} /></span>
-                <span className="text-sm font-semibold">ElectroLab Industri</span>
-              </div>
-              <button type="button" onClick={closeMenu} aria-label="Tutup menu" className="rounded-md p-2 text-muted hover:bg-raised hover:text-ink"><Icon name="x" /></button>
-            </div>
-            <nav className="scroll-thin flex-1 overflow-y-auto p-3">
-              <p className="px-3 pb-2 pt-1 text-[11px] font-medium uppercase tracking-wider text-muted">Navigasi</p>
-              <Link href="/" onClick={closeMenu} aria-current="page" className="mb-2 flex h-10 items-center gap-3 rounded-md bg-raised px-3 text-sm font-medium text-ink">
-                <Icon name="dashboard" size={17} />
-                <span className="flex-1">Beranda</span>
-              </Link>
-              <div className="my-2 border-t border-line" />
-              <p className="px-3 pb-2 pt-2 text-[11px] font-medium uppercase tracking-wider text-muted">Menu aplikasi</p>
-              {NAV_ITEMS.map((item) => (
-                <Link key={item.href} href={item.href === '/dashboard' ? '/' : item.href} onClick={closeMenu} className="flex h-10 items-center gap-3 rounded-md px-3 text-sm text-muted transition-colors hover:bg-raised hover:text-ink">
-                  <Icon name={item.icon} size={17} />
-                  <span className="flex-1">{item.label}</span>
-                  {item.phase && <span className="text-[11px] text-muted">Phase {item.phase}</span>}
-                </Link>
-              ))}
-            </nav>
-            <p className="border-t border-line px-5 py-4 text-[11px] leading-relaxed text-muted">Simulator pembelajaran. Hasil simulasi tidak menggantikan perhitungan desain dan pemeriksaan instalasi sesuai PUIL/SNI.</p>
-          </aside>
-        </div>
-      )}
-
       <main className="w-full px-4 pb-16 pt-12 sm:px-7 sm:pt-16 lg:px-10 lg:pt-20 2xl:px-14">
         <section className="grid w-full items-center gap-10 border-b border-line pb-14 lg:grid-cols-[minmax(0,1.15fr)_minmax(320px,0.85fr)] lg:gap-14 lg:pb-20">
           <div className="max-w-4xl">
