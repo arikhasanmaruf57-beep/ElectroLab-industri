@@ -9,7 +9,9 @@
     "start": "next start",
     "typecheck": "tsc --noEmit",
     "test": "node --import tsx --test \"src/**/*.test.ts\"",
-    "check": "npm run typecheck && npm run test && npm run build"
+    "check": "npm run typecheck && npm run test && npm run build",
+    "assets:discover": "tsx scripts/assets/asset-collector.ts discover",
+    "assets:download": "tsx scripts/assets/asset-collector.ts download"
   },
   "dependencies": {
     "next": "^15.0.0",
@@ -21,6 +23,7 @@
     "@tailwindcss/postcss": "^4.0.0",
     "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",
+    "@types/node": "^22.0.0",
     "@types/react-dom": "^19.0.0",
     "tailwindcss": "^4.0.0",
     "tsx": "^4.19.0",
