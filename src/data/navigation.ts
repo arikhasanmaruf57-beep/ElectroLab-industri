@@ -10,7 +10,7 @@ export interface NavItem {
 }
 
 export const NAV_ITEMS: readonly NavItem[] = [
-  { href: '/dashboard', label: 'Dashboard', title: 'Dashboard', icon: 'dashboard' },
+  { href: '/', label: 'Beranda', title: 'Beranda', icon: 'dashboard' },
   { href: '/workspace', label: 'Electrical Workspace', title: 'Electrical Workspace', icon: 'workspace' },
   { href: '/house-installation', label: 'House Installation', title: 'Instalasi Listrik Rumah', icon: 'house', phase: 5 },
   { href: '/building-installation', label: 'Building Installation', title: 'Instalasi Listrik Gedung', icon: 'building', phase: 5 },
