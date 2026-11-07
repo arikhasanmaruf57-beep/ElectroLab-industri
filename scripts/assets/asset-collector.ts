@@ -308,6 +308,7 @@ async function downloadApproved(): Promise<void> {
         licenseVersion: asset.licenseVersion ?? null,
         licenseUrl: asset.licenseUrl ?? null,
         provider: asset.provider ?? null,
+        rightsEvidence: asset.rightsEvidence ?? null,
         verifiedByHuman: true,
         downloadedAt: new Date().toISOString(),
       };
