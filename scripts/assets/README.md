@@ -9,6 +9,9 @@ Asset Collector is a local Node/TypeScript workflow for discovering component im
    - Siemens documentation and CAx downloads: https://www.siemens.com/en-us/support/documentation-downloads/
    - Schneider Electric Product Catalog API: https://api-explorer.se.com/en/api/product-catalog-v2
    - Schneider Electric Product Digital Asset API: https://api-explorer.se.com/en/api/product-digital-asset-v1
+   - ABB Library: https://library.abb.com/
+   - Eaton CAD/eCAD/mCAD portals: https://www.eaton.com/us/en-us/support/tools/ecad-mcad-eplan-.html
+   - OMRON CAD Library: https://industrial.omron.eu/en/services-support/support/cad-library
 
 Some manufacturer catalog APIs require OAuth, onboarding or contractual access. The initial collector does not pretend to bypass those requirements.
 
