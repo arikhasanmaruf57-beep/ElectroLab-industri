@@ -44,8 +44,25 @@ interface AssetCandidate {
   reviewStatus: 'needs-review';
 }
 
-interface ApprovedAsset extends AssetCandidate {
+interface ApprovedAsset {
+  id: string;
+  componentType: string;
+  componentName: string;
+  view: 'physical';
+  sourceType: 'openverse' | 'manufacturer';
+  title: string;
+  imageUrl: string;
+  sourcePage: string;
+  creator?: string;
+  attribution?: string;
+  license: string;
+  licenseVersion?: string;
+  licenseUrl?: string;
+  provider?: string;
   approved: true;
+  /** Required for manufacturer assets: documented permission/rights evidence. */
+  rightsStatus?: 'approved';
+  rightsEvidence?: string;
   /** Optional override for the generated filename. */
   filename?: string;
 }
@@ -213,10 +230,17 @@ function extensionFromMime(mime: string): string | undefined {
 }
 
 async function downloadImage(asset: ApprovedAsset): Promise<{ relativePath: string; bytes: number }> {
-  if (asset.approved !== true || !isAllowedLicense(asset.license)) {
-    throw new Error(`Asset ${asset.id} is not approved or has a disallowed license.`);
+  if (asset.approved !== true) {
+    throw new Error(`Asset ${asset.id} has not been approved.`);
   }
-  if (!asset.attribution && (asset.license === 'by' || asset.license === 'by-sa')) {
+  if (asset.sourceType === 'openverse' && !isAllowedLicense(asset.license)) {
+    throw new Error(`Asset ${asset.id} has a disallowed Openverse license.`);
+  }
+  if (asset.sourceType === 'manufacturer' &&
+      (asset.rightsStatus !== 'approved' || !asset.rightsEvidence)) {
+    throw new Error(`Manufacturer asset ${asset.id} needs confirmed usage rights and rightsEvidence.`);
+  }
+  if (asset.sourceType === 'openverse' && !asset.attribution && (asset.license === 'by' || asset.license === 'by-sa')) {
     throw new Error(`Asset ${asset.id} requires creator attribution before download.`);
   }
 
@@ -250,9 +274,12 @@ async function downloadImage(asset: ApprovedAsset): Promise<{ relativePath: stri
 }
 
 async function downloadApproved(): Promise<void> {
-  const approved = JSON.parse(await readFile(APPROVED_FILE, 'utf8')) as ApprovedAsset[];
+  const openverseApproved = JSON.parse(await readFile(APPROVED_FILE, 'utf8')) as ApprovedAsset[];
+  const officialFile = path.join(ROOT, 'src/data/assets/official-assets.json');
+  const officialApproved = JSON.parse(await readFile(officialFile, 'utf8')) as ApprovedAsset[];
+  const approved = [...openverseApproved, ...officialApproved];
   if (!Array.isArray(approved) || approved.length === 0) {
-    console.log('No approved assets found. Review asset-candidates.json and add approved entries to approved-assets.json.');
+    console.log('No approved assets found. Review Openverse candidates or add rights-verified entries to official-assets.json.');
     return;
   }
 
@@ -271,6 +298,7 @@ async function downloadApproved(): Promise<void> {
       const entry = {
         id: asset.id,
         componentType: asset.componentType,
+        sourceType: asset.sourceType,
         view: asset.view,
         localPath: downloaded.relativePath,
         sourcePage: asset.sourcePage,
