@@ -8,7 +8,7 @@ import { useSettingsStore } from '@/store/settings-store';
 import { useWorkspaceStore } from '@/store/workspace-store';
 import { CONDUCTOR_LABELS, TERMINAL_KIND_LABELS } from '@/types/electrical';
 import { TERMINAL_COLORS } from '../electrical-symbols/terminal-style';
-import { SymbolPreview } from '../electrical-symbols/SymbolPreview';
+import { ComponentVisualPreview } from '../electrical-symbols/ComponentVisualPreview';
 import { Icon } from '../ui/Icon';
 
 const SHORTCUTS: Array<[string, string]> = [
@@ -57,6 +57,7 @@ export function Inspector() {
   const rotate = useWorkspaceStore((s) => s.rotateSelection);
   const del = useWorkspaceStore((s) => s.deleteSelection);
   const colors = useSettingsStore((s) => s.conductorColors);
+  const viewMode = useSettingsStore((s) => s.componentViewMode);
 
   const total = selection.components.length + selection.wires.length;
 
@@ -85,7 +86,7 @@ export function Inspector() {
     if (!placed || !def) return null;
     return (
       <div className="space-y-4 p-4 text-sm" data-testid="inspector-component">
-        <div className="rounded-md border border-line bg-bg p-2"><SymbolPreview def={def} className="mx-auto h-24 w-full text-ink" /></div>
+        <div className="rounded-md border border-line bg-bg p-2"><ComponentVisualPreview def={def} mode={viewMode} className="mx-auto h-24 w-full text-ink" /></div>
         <div>
           <h2 className="font-semibold">{def.name}</h2>
           <p className="text-xs text-muted">{CATEGORY_BY_ID[def.category].label}</p>
