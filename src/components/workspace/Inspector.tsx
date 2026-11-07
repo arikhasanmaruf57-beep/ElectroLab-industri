@@ -113,12 +113,19 @@ export function Inspector() {
         <div>
           <h3 className="text-xs font-semibold text-muted">Terminal</h3>
           <ul className="mt-1 divide-y divide-line rounded-md border border-line" data-testid="inspector-terminals">
-            {def.terminals.map((t) => {
+            {def.terminals.map((t, index) => {
               const n = countConnections(doc, { componentId: placed.id, terminalId: t.id });
+              const physicalMcb = def.type === 'mcb-1p' && viewMode === 'physical';
               return (
                 <li key={t.id} className="flex items-center gap-2 px-2.5 py-1.5 text-xs">
                   <span className="size-2.5 shrink-0 rounded-full border-2" style={{ borderColor: TERMINAL_COLORS[t.kind], background: n ? TERMINAL_COLORS[t.kind] : 'transparent' }} />
-                  <span className="min-w-0 flex-1"><span className="font-medium">{t.id}</span> <span className="text-muted">{t.name} · {TERMINAL_KIND_LABELS[t.kind]}</span></span>
+                  <span className="min-w-0 flex-1">
+                    {physicalMcb ? (
+                      <span className="font-medium">{index === 0 ? 'Sumber masuk · baut atas' : 'Keluaran · baut bawah'}</span>
+                    ) : (
+                      <><span className="font-medium">{t.id}</span> <span className="text-muted">{t.name} · {TERMINAL_KIND_LABELS[t.kind]}</span></>
+                    )}
+                  </span>
                   <span className={n ? 'text-ok' : 'text-muted'}>{n ? `${n}/${t.maxConnections ?? DEFAULT_MAX_CONNECTIONS}` : 'belum terhubung'}</span>
                 </li>
               );
