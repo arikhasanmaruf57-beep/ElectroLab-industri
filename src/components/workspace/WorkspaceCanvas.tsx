@@ -30,6 +30,7 @@ export function WorkspaceCanvas() {
   const pendingFrom = useWorkspaceStore((s) => s.pendingFrom);
   const colors = useSettingsStore((s) => s.conductorColors);
   const showGrid = useSettingsStore((s) => s.showGrid);
+  const componentViewMode = useSettingsStore((s) => s.componentViewMode);
 
   const [hover, setHover] = useState<TerminalRef | null>(null);
   const [preview, setPreview] = useState<Point | null>(null);
@@ -325,6 +326,7 @@ export function WorkspaceCanvas() {
                 placed={c}
                 def={def}
                 selected={selectedComps.has(c.id)}
+                viewMode={componentViewMode}
                 connected={connectedMap.get(c.id)}
                 pending={pendingMap?.[c.id]}
                 onBodyDown={onBodyDown}
