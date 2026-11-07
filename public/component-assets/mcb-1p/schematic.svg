@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 200" width="120" height="200" role="img" aria-labelledby="t d">
+  <title id="t">Simbol skematik MCB 1 Pole</title>
+  <desc id="d">Kontak pemutus satu kutub digambar terbuka dengan tanda silang pemutus (circuit breaker). Terminal atas dan bawah berupa lingkaran. Tanpa nomor terminal dan tanpa nilai rating.</desc>
+  <!-- Warna mengikuti `color` elemen pembungkus (currentColor); hitam bila berdiri sendiri. -->
+  <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <!-- terminal atas -->
+    <circle cx="60" cy="18" r="5"/>
+    <!-- penghantar atas sampai titik putar kontak -->
+    <line x1="60" y1="23" x2="60" y2="72"/>
+    <!-- lengan kontak bergerak (posisi terbuka) -->
+    <line x1="60" y1="72" x2="36" y2="124"/>
+    <!-- tanda silang pemutus (circuit breaker) pada jalur kontak -->
+    <line x1="52" y1="60" x2="68" y2="76"/>
+    <line x1="68" y1="60" x2="52" y2="76"/>
+    <!-- kontak tetap bawah dan penghantar bawah -->
+    <line x1="60" y1="132" x2="60" y2="177"/>
+    <line x1="52" y1="132" x2="68" y2="132"/>
+    <!-- terminal bawah -->
+    <circle cx="60" cy="182" r="5"/>
+  </g>
+</svg>

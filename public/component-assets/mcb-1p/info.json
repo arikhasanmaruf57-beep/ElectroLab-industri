@@ -1,0 +1,31 @@
+{
+  "id": "mcb-1p",
+  "name": "MCB 1 Pole (1P)",
+  "category": "protection",
+  "description": "Miniature Circuit Breaker satu kutub untuk pemasangan modular pada DIN rail. Berfungsi sebagai pengaman arus lebih (beban lebih dan hubung singkat) sekaligus saklar manual ON/OFF pada satu penghantar. Aset generik tanpa merek dan tanpa nilai rating.",
+  "image": "physical.png",
+  "schematic": "schematic.svg",
+  "poles": 1,
+  "terminals": {
+    "count": 2,
+    "arrangement": "Satu terminal di sisi atas dan satu di sisi bawah modul, masing-masing dengan sekrup terminal.",
+    "numbering": null,
+    "lineSide": null,
+    "loadSide": null,
+    "note": "Penomoran dan sisi suplai/beban tidak diverifikasi sebagai ketentuan umum dan sengaja dikosongkan. Ikuti penandaan pada perangkat atau lembar data pabrikan yang dipakai."
+  },
+  "technicalSpecifications": {
+    "ratedCurrentA": null,
+    "ratedVoltageV": null,
+    "frequencyHz": null,
+    "tripCurve": null,
+    "breakingCapacityKA": null,
+    "moduleWidthMm": null,
+    "mounting": "DIN rail",
+    "terminalCapacityMm2": null,
+    "standard": null
+  },
+  "imageType": "ai-generated-illustration",
+  "imageSource": "Ilustrasi vektor hasil karya AI: kode SVG ditulis oleh Claude (Anthropic) lalu dirender ke PNG. Bentuk, proporsi, dan warna (bodi abu-abu terang, tuas oranye) mengacu pada foto MCB 1 kutub yang diberikan pengguna sebagai referensi gaya. Bukan foto produk dan bukan keluaran model pembuat gambar. Logo, nama merek/seri, kode produk, dan angka rating pada foto referensi sengaja tidak disalin.",
+  "imageLicense": null
+}
