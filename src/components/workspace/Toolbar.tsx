@@ -43,12 +43,17 @@ export function Toolbar({ showLibrary, showInspector, onToggleLibrary, onToggleI
   const setSnap = useSettingsStore((s) => s.setSnapSize);
   const showGrid = useSettingsStore((s) => s.showGrid);
   const setShowGrid = useSettingsStore((s) => s.setShowGrid);
+  const componentViewMode = useSettingsStore((s) => s.componentViewMode);
+  const setComponentViewMode = useSettingsStore((s) => s.setComponentViewMode);
   const s = useWorkspaceStore.getState;
   const nextSnap: SnapSize = snap === 10 ? 20 : snap === 20 ? 0 : 10;
 
   return (
     <div role="toolbar" aria-label="Alat workspace" className="flex flex-wrap items-center gap-0.5 border-b border-line bg-surface px-2 py-1.5">
       <Btn icon="panelleft" label={showLibrary ? 'Sembunyikan Library' : 'Tampilkan Library'} active={showLibrary} onClick={onToggleLibrary} testId="toggle-library" />
+      <Sep />
+      <Btn icon="workspace" label="Tampilkan simbol skematik" text="Skematik" active={componentViewMode === 'schematic'} onClick={() => setComponentViewMode('schematic')} testId="view-schematic" />
+      <Btn icon="library" label="Tampilkan gambar fisik" text="Gambar fisik" active={componentViewMode === 'physical'} onClick={() => setComponentViewMode('physical')} testId="view-physical" />
       <Sep />
       <Btn icon="cursor" label="Alat pilih" active={tool === 'select'} onClick={() => setTool('select')} testId="tool-select" />
       <Btn icon="pan" label="Alat geser (atau tahan Spasi)" active={tool === 'pan'} onClick={() => setTool('pan')} testId="tool-pan" />
