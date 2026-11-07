@@ -4,6 +4,7 @@ import { CONDUCTOR_TYPES, type ConductorType } from '@/types/electrical';
 
 export type Theme = 'dark' | 'light';
 export type SnapSize = 0 | 10 | 20;
+export type ComponentViewMode = 'schematic' | 'physical';
 
 export const SETTINGS_KEY = 'esim.settings.v1';
 
@@ -11,6 +12,7 @@ interface PersistedSettings {
   theme: Theme;
   snapSize: SnapSize;
   showGrid: boolean;
+  componentViewMode: ComponentViewMode;
   sidebarCollapsed: boolean;
   /** true bila pengguna sendiri yang memilih; jika tidak, tablet mulai dengan sidebar ringkas. */
   sidebarChosen: boolean;
@@ -25,6 +27,7 @@ interface SettingsState extends PersistedSettings {
   toggleTheme: () => void;
   setSnapSize: (s: SnapSize) => void;
   setShowGrid: (v: boolean) => void;
+  setComponentViewMode: (mode: ComponentViewMode) => void;
   setSidebarCollapsed: (v: boolean) => void;
   applyPreset: (id: Exclude<ColorSchemeId, 'custom'>) => void;
   setConductorColor: (type: ConductorType, color: string) => void;
@@ -35,6 +38,7 @@ const defaults = (): PersistedSettings => ({
   theme: 'dark',
   snapSize: 10,
   showGrid: true,
+  componentViewMode: 'schematic',
   sidebarCollapsed: false,
   sidebarChosen: false,
   colorScheme: DEFAULT_SCHEME,
@@ -51,6 +55,7 @@ function parse(raw: string | null): Partial<PersistedSettings> {
     if (p.theme === 'dark' || p.theme === 'light') out.theme = p.theme;
     if (p.snapSize === 0 || p.snapSize === 10 || p.snapSize === 20) out.snapSize = p.snapSize;
     if (typeof p.showGrid === 'boolean') out.showGrid = p.showGrid;
+    if (p.componentViewMode === 'schematic' || p.componentViewMode === 'physical') out.componentViewMode = p.componentViewMode;
     if (typeof p.sidebarCollapsed === 'boolean') out.sidebarCollapsed = p.sidebarCollapsed;
     if (typeof p.sidebarChosen === 'boolean') out.sidebarChosen = p.sidebarChosen;
     if (p.colorScheme === 'puil' || p.colorScheme === 'iec' || p.colorScheme === 'custom') out.colorScheme = p.colorScheme;
@@ -72,8 +77,8 @@ function parse(raw: string | null): Partial<PersistedSettings> {
 function persist(state: PersistedSettings): void {
   if (typeof window === 'undefined') return;
   try {
-    const { theme, snapSize, showGrid, sidebarCollapsed, sidebarChosen, colorScheme, conductorColors } = state;
-    window.localStorage.setItem(SETTINGS_KEY, JSON.stringify({ theme, snapSize, showGrid, sidebarCollapsed, sidebarChosen, colorScheme, conductorColors }));
+    const { theme, snapSize, showGrid, componentViewMode, sidebarCollapsed, sidebarChosen, colorScheme, conductorColors } = state;
+    window.localStorage.setItem(SETTINGS_KEY, JSON.stringify({ theme, snapSize, showGrid, componentViewMode, sidebarCollapsed, sidebarChosen, colorScheme, conductorColors }));
   } catch {
     /* abaikan */
   }
@@ -103,6 +108,7 @@ export const useSettingsStore = create<SettingsState>()((set, get) => {
     toggleTheme: () => update({ theme: get().theme === 'dark' ? 'light' : 'dark' }),
     setSnapSize: (snapSize) => update({ snapSize }),
     setShowGrid: (showGrid) => update({ showGrid }),
+    setComponentViewMode: (componentViewMode) => update({ componentViewMode }),
     setSidebarCollapsed: (sidebarCollapsed) => update({ sidebarCollapsed, sidebarChosen: true }),
     applyPreset: (id) => update({ colorScheme: id, conductorColors: { ...CONDUCTOR_PRESETS[id].colors } }),
     setConductorColor: (type, color) => {
