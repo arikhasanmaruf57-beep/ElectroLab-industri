@@ -2,6 +2,8 @@ import type { ComponentDefinition } from '@/types/component';
 import type { TerminalDefinition } from '@/types/electrical';
 import type { PlacedComponent, TerminalRef } from '@/types/workspace';
 import { ComponentSymbol } from '../electrical-symbols/ComponentSymbol';
+import { getPhysicalAsset } from '../electrical-symbols/physical-assets';
+import type { ComponentViewMode } from '@/store/settings-store';
 import { TERMINAL_COLORS } from '../electrical-symbols/terminal-style';
 
 export type PendingState = 'ok' | 'bad' | 'origin';
@@ -10,6 +12,7 @@ interface Props {
   placed: PlacedComponent;
   def: ComponentDefinition;
   selected: boolean;
+  viewMode: ComponentViewMode;
   connected: ReadonlySet<string> | undefined;
   pending: Record<string, PendingState> | undefined;
   onBodyDown: (e: React.PointerEvent, id: string) => void;
@@ -30,19 +33,30 @@ function labelPlacement(t: TerminalDefinition): { dx: number; dy: number; anchor
   }
 }
 
-export function ComponentNode({ placed, def, selected, connected, pending, onBodyDown, onTerminalDown, onTerminalHover }: Props) {
+export function ComponentNode({ placed, def, selected, viewMode, connected, pending, onBodyDown, onTerminalDown, onTerminalHover }: Props) {
   const { width: w, height: h } = def.layout;
   const swap = placed.rotation === 90 || placed.rotation === 270;
   const bh = swap ? w : h;
   const cx = placed.x + w / 2;
   const cy = placed.y + h / 2;
+  const physicalImage = viewMode === 'physical' ? getPhysicalAsset(def) : undefined;
 
   return (
-    <g data-testid="component" data-component-id={placed.id} data-type={def.type} data-label={placed.label}>
+    <g data-testid="component" data-component-id={placed.id} data-type={def.type} data-label={placed.label} data-display-mode={viewMode}>
       <g transform={`translate(${placed.x} ${placed.y}) rotate(${placed.rotation} ${w / 2} ${h / 2})`}>
         <g onPointerDown={(e) => onBodyDown(e, placed.id)} style={{ cursor: 'move' }}>
           <rect x={-4} y={-4} width={w + 8} height={h + 8} fill="transparent" />
-          <ComponentSymbol def={def} />
+          {viewMode === 'schematic' ? (
+            <ComponentSymbol def={def} />
+          ) : physicalImage ? (
+            <image href={physicalImage} x={0} y={0} width={w} height={h} preserveAspectRatio="xMidYMid meet" />
+          ) : (
+            <g>
+              <rect x={0} y={0} width={w} height={h} rx={4} fill="var(--body-fill)" stroke="var(--symbol-dim)" strokeDasharray="4 3" />
+              <text x={w / 2} y={h / 2 - 4} textAnchor="middle" fontSize={9} fontWeight={600} fill="var(--symbol-dim)">GAMBAR FISIK</text>
+              <text x={w / 2} y={h / 2 + 10} textAnchor="middle" fontSize={8} fill="var(--muted)">BELUM TERSEDIA</text>
+            </g>
+          )}
         </g>
         {selected && (
           <rect x={-6} y={-6} width={w + 12} height={h + 12} rx={5} fill="none" stroke="var(--accent)" strokeWidth={1.4} strokeDasharray="5 3" pointerEvents="none" />
