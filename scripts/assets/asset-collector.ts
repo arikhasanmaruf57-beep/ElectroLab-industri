@@ -106,6 +106,21 @@ const OFFICIAL_REFERENCE_SOURCES = [
     url: 'https://api-explorer.se.com/en/api/product-digital-asset-v1',
     note: 'Product visual assets including 360-degree and 3D media; API access requires OAuth.',
   },
+  {
+    name: 'ABB Library',
+    url: 'https://library.abb.com/',
+    note: 'Official product documentation and technical publications; check each asset license and terms.',
+  },
+  {
+    name: 'Eaton CAD / eCAD / mCAD portals',
+    url: 'https://www.eaton.com/us/en-us/support/tools/ecad-mcad-eplan-.html',
+    note: 'Official CAD/CAE product data portals; some downloads require an account.',
+  },
+  {
+    name: 'OMRON CAD Library',
+    url: 'https://industrial.omron.eu/en/services-support/support/cad-library',
+    note: 'Official 2D/3D CAD library; check the terms for each downloadable file.',
+  },
 ];
 
 function parseArg(name: string): string | undefined {
