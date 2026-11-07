@@ -1,0 +1,17 @@
+[
+  {
+    "_example": "Copy this object only after checking the exact manufacturer asset and its reuse terms.",
+    "id": "manufacturer-example-contactor-model",
+    "componentType": "contactor-3p",
+    "componentName": "Kontaktor 3 pole",
+    "view": "physical",
+    "sourceType": "manufacturer",
+    "title": "Exact manufacturer product image",
+    "imageUrl": "https://manufacturer.example/product-image.jpg",
+    "sourcePage": "https://manufacturer.example/product-page",
+    "license": "Manufacturer terms / written permission",
+    "rightsStatus": "review-required",
+    "rightsEvidence": "",
+    "approved": false
+  }
+]
