@@ -197,9 +197,9 @@ async function discover(): Promise<void> {
     scannedComponents: targets.map((component) => component.type),
     candidates,
     failures,
-  }, null, 2) + '\\n');
+  }, null, 2) + '\n');
 
-  console.log(`\\nSaved ${candidates.length} candidates to src/data/assets/asset-candidates.json`);
+  console.log(`\nSaved ${candidates.length} candidates to src/data/assets/asset-candidates.json`);
   console.log(`${failures.length} component searches failed. Review image relevance and terminal visibility before approval.`);
 }
 
@@ -240,7 +240,7 @@ async function downloadImage(asset: ApprovedAsset): Promise<{ relativePath: stri
   }
 
   const filename = asset.filename
-    ? safeSlug(asset.filename.replace(/\\.[^.]+$/, ''))
+    ? safeSlug(asset.filename.replace(/\.[^.]+$/, ''))
     : safeSlug(asset.componentType);
   const relativePath = `/assets/physical/${filename}.${extension}`;
   const destination = path.join(PHYSICAL_DIR, `${filename}.${extension}`);
@@ -297,8 +297,8 @@ async function downloadApproved(): Promise<void> {
     version: 1,
     updatedAt: new Date().toISOString(),
     entries: [...merged.values()],
-  }, null, 2) + '\\n');
-  console.log(`\\nManifest updated: ${completed.length} assets downloaded successfully.`);
+  }, null, 2) + '\n');
+  console.log(`\nManifest updated: ${completed.length} assets downloaded successfully.`);
 }
 
 async function main(): Promise<void> {
