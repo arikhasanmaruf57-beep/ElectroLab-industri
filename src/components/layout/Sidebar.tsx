@@ -35,11 +35,12 @@ export function Sidebar() {
       <nav className="scroll-thin flex-1 overflow-y-auto py-2">
         <ul className="space-y-0.5 px-2">
           {NAV_ITEMS.map((item) => {
-            const active = pathname === item.href || pathname.startsWith(item.href + '/');
+            const href = item.href === '/dashboard' ? '/' : item.href;
+            const active = pathname === href || (href !== '/' && pathname.startsWith(href + '/'));
             return (
               <li key={item.href}>
                 <Link
-                  href={item.href}
+                  href={href}
                   title={collapsed ? item.label : undefined}
                   aria-current={active ? 'page' : undefined}
                   className={cn(
