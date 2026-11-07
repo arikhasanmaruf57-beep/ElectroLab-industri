@@ -92,7 +92,7 @@ const OFFICIAL_REFERENCE_SOURCES = [
 ];
 
 function parseArg(name: string): string | undefined {
-  const prefix = \`\${name}=\`;
+  const prefix = `${name}=`;
   return process.argv.find((arg) => arg.startsWith(prefix))?.slice(prefix.length);
 }
 
@@ -102,7 +102,7 @@ function safeSlug(value: string): string {
 
 function queryFor(component: (typeof COMPONENTS)[number]): string {
   return SEARCH_TERMS[component.type] ??
-    \`\${component.name} electrical component industrial product front view\`;
+    `${component.name} electrical component industrial product front view`;
 }
 
 function isAllowedLicense(license: string): license is LicenseCode {
@@ -131,11 +131,11 @@ async function searchOpenverse(query: string): Promise<OpenverseImage[]> {
       );
     }
     if (response.status !== 429 && response.status < 500) {
-      throw new Error(\`Openverse returned HTTP \${response.status} for "\${query}"\`);
+      throw new Error(`Openverse returned HTTP ${response.status} for "${query}"`);
     }
     await new Promise((resolve) => setTimeout(resolve, 1500 * (attempt + 1)));
   }
-  throw new Error(\`Openverse request failed after retries: "\${query}"\`);
+  throw new Error(`Openverse request failed after retries: "${query}"`);
 }
 
 async function discover(): Promise<void> {
@@ -150,14 +150,14 @@ async function discover(): Promise<void> {
   const candidates: AssetCandidate[] = [];
   const failures: Array<{ componentType: string; error: string }> = [];
 
-  console.log(\`ElectroLab Asset Collector: searching \${targets.length} catalog components...\`);
+  console.log(`ElectroLab Asset Collector: searching ${targets.length} catalog components...`);
   for (const [index, component] of targets.entries()) {
     const query = queryFor(component);
     try {
       const results = await searchOpenverse(query);
       for (const result of results) {
         candidates.push({
-          id: \`openverse-\${result.id}-\${component.type}\`,
+          id: `openverse-${result.id}-${component.type}`,
           componentType: component.type,
           componentName: component.name,
           view: 'physical',
@@ -178,11 +178,11 @@ async function discover(): Promise<void> {
           reviewStatus: 'needs-review',
         });
       }
-      console.log(\`[\${index + 1}/\${targets.length}] \${component.type}: \${results.length} candidates\`);
+      console.log(`[${index + 1}/${targets.length}] ${component.type}: ${results.length} candidates`);
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
       failures.push({ componentType: component.type, error: message });
-      console.warn(\`[\${index + 1}/\${targets.length}] \${component.type}: \${message}\`);
+      console.warn(`[${index + 1}/${targets.length}] ${component.type}: ${message}`);
     }
     // Be polite to the free public API.
     if (index < targets.length - 1) await new Promise((resolve) => setTimeout(resolve, 1100));
@@ -199,8 +199,8 @@ async function discover(): Promise<void> {
     failures,
   }, null, 2) + '\\n');
 
-  console.log(\`\\nSaved \${candidates.length} candidates to src/data/assets/asset-candidates.json\`);
-  console.log(\`\${failures.length} component searches failed. Review image relevance and terminal visibility before approval.\`);
+  console.log(`\\nSaved ${candidates.length} candidates to src/data/assets/asset-candidates.json`);
+  console.log(`${failures.length} component searches failed. Review image relevance and terminal visibility before approval.`);
 }
 
 function extensionFromMime(mime: string): string | undefined {
@@ -214,10 +214,10 @@ function extensionFromMime(mime: string): string | undefined {
 
 async function downloadImage(asset: ApprovedAsset): Promise<{ relativePath: string; bytes: number }> {
   if (asset.approved !== true || !isAllowedLicense(asset.license)) {
-    throw new Error(\`Asset \${asset.id} is not approved or has a disallowed license.\`);
+    throw new Error(`Asset ${asset.id} is not approved or has a disallowed license.`);
   }
   if (!asset.attribution && (asset.license === 'by' || asset.license === 'by-sa')) {
-    throw new Error(\`Asset \${asset.id} requires creator attribution before download.\`);
+    throw new Error(`Asset ${asset.id} requires creator attribution before download.`);
   }
 
   const response = await fetch(asset.imageUrl, {
@@ -225,12 +225,12 @@ async function downloadImage(asset: ApprovedAsset): Promise<{ relativePath: stri
     signal: AbortSignal.timeout(30000),
     headers: { 'User-Agent': 'ElectroLab-AssetCollector/0.1' },
   });
-  if (!response.ok) throw new Error(\`Image download failed: HTTP \${response.status}\`);
+  if (!response.ok) throw new Error(`Image download failed: HTTP ${response.status}`);
   if (!response.url.startsWith('https://')) throw new Error('Refusing a non-HTTPS final image URL.');
 
   const mime = response.headers.get('content-type') ?? '';
   const extension = extensionFromMime(mime);
-  if (!extension) throw new Error(\`Unsupported image content type: \${mime}\`);
+  if (!extension) throw new Error(`Unsupported image content type: ${mime}`);
 
   const declaredLength = Number(response.headers.get('content-length') ?? 0);
   if (declaredLength > MAX_IMAGE_BYTES) throw new Error('Image exceeds 8 MB limit.');
@@ -242,8 +242,8 @@ async function downloadImage(asset: ApprovedAsset): Promise<{ relativePath: stri
   const filename = asset.filename
     ? safeSlug(asset.filename.replace(/\\.[^.]+$/, ''))
     : safeSlug(asset.componentType);
-  const relativePath = \`/assets/physical/\${filename}.\${extension}\`;
-  const destination = path.join(PHYSICAL_DIR, \`\${filename}.\${extension}\`);
+  const relativePath = `/assets/physical/${filename}.${extension}`;
+  const destination = path.join(PHYSICAL_DIR, `${filename}.${extension}`);
   await mkdir(PHYSICAL_DIR, { recursive: true });
   await writeFile(destination, bytes);
   return { relativePath, bytes: bytes.byteLength };
@@ -284,9 +284,9 @@ async function downloadApproved(): Promise<void> {
         downloadedAt: new Date().toISOString(),
       };
       completed.push(entry);
-      console.log(\`Downloaded \${asset.componentType} -> \${downloaded.relativePath} (\${downloaded.bytes} bytes)\`);
+      console.log(`Downloaded ${asset.componentType} -> ${downloaded.relativePath} (${downloaded.bytes} bytes)`);
     } catch (error) {
-      console.error(\`Skipped \${asset.id}: \${error instanceof Error ? error.message : String(error)}\`);
+      console.error(`Skipped ${asset.id}: ${error instanceof Error ? error.message : String(error)}`);
     }
   }
 
@@ -298,7 +298,7 @@ async function downloadApproved(): Promise<void> {
     updatedAt: new Date().toISOString(),
     entries: [...merged.values()],
   }, null, 2) + '\\n');
-  console.log(\`\\nManifest updated: \${completed.length} assets downloaded successfully.\`);
+  console.log(`\\nManifest updated: ${completed.length} assets downloaded successfully.`);
 }
 
 async function main(): Promise<void> {
