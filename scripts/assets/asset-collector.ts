@@ -280,7 +280,7 @@ async function downloadImage(asset: ApprovedAsset): Promise<{ relativePath: stri
 
   const filename = asset.filename
     ? safeSlug(asset.filename.replace(/\.[^.]+$/, ''))
-    : safeSlug(asset.componentType);
+    : `${safeSlug(asset.componentType)}-${safeSlug(asset.id).slice(-24)}`;
   const relativePath = `/assets/physical/${filename}.${extension}`;
   const destination = path.join(PHYSICAL_DIR, `${filename}.${extension}`);
   await mkdir(PHYSICAL_DIR, { recursive: true });
