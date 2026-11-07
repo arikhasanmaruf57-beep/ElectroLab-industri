@@ -1,14 +1,12 @@
 'use client';
 
 import { useEffect, type ReactNode } from 'react';
-import { usePathname } from 'next/navigation';
 import { useSettingsStore } from '@/store/settings-store';
 import { startAutosave, useWorkspaceStore } from '@/store/workspace-store';
 import { Toast } from '../notifications/Toast';
 import { Topbar } from './Topbar';
 
 export function AppShell({ children }: { children: ReactNode }) {
-  const pathname = usePathname();
   const theme = useSettingsStore((s) => s.theme);
 
   useEffect(() => {
