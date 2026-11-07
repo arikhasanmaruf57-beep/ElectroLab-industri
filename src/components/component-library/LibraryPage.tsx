@@ -76,6 +76,19 @@ export function LibraryPage() {
       {selected && (
         <aside className="scroll-thin w-full shrink-0 overflow-y-auto rounded-lg border border-line bg-surface lg:w-[380px]" aria-label="Detail komponen" data-testid="catalog-detail">
           <div className="border-b border-line p-4">
+            {selected.type === 'mcb-1p' && (
+              <div className="mb-4">
+                <h3 className="mb-2 text-xs font-semibold text-muted">Tampilan fisik</h3>
+                <div className="flex h-44 items-center justify-center rounded-md bg-white p-2">
+                  <img
+                    src="/component-assets/mcb-1p/physical.png"
+                    alt="Ilustrasi fisik MCB 1 pole"
+                    className="h-full w-full object-contain"
+                  />
+                </div>
+              </div>
+            )}
+            <h3 className="mb-1 text-xs font-semibold text-muted">Simbol skematik</h3>
             <SymbolPreview def={selected} showTerminalIds className="mx-auto h-44 w-full text-ink" />
           </div>
           <div className="space-y-4 p-4">
