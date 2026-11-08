@@ -1,0 +1,93 @@
+{
+  "id": "motor-3p-6t",
+  "name": "Motor Induksi 3 Phase (6 terminal)",
+  "category": "motor",
+  "image": "physical.svg",
+  "imageSize": {
+    "width": 92,
+    "height": 112
+  },
+  "imageType": "ai-generated-illustration",
+  "imageSource": "Ilustrasi vektor generik ElectroLab dari SVG. Bukan foto produk pabrikan atau representasi merek/model tertentu.",
+  "imageLicense": null,
+  "terminalCount": 7,
+  "terminals": [
+    {
+      "id": "U1",
+      "label": "U1",
+      "kind": "power",
+      "side": "top",
+      "position": {
+        "x": 0.2826,
+        "y": 0.0536
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "V1",
+      "label": "V1",
+      "kind": "power",
+      "side": "top",
+      "position": {
+        "x": 0.5,
+        "y": 0.0536
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "W1",
+      "label": "W1",
+      "kind": "power",
+      "side": "top",
+      "position": {
+        "x": 0.7174,
+        "y": 0.0536
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "W2",
+      "label": "W2",
+      "kind": "power",
+      "side": "bottom",
+      "position": {
+        "x": 0.2826,
+        "y": 0.9464
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "U2",
+      "label": "U2",
+      "kind": "power",
+      "side": "bottom",
+      "position": {
+        "x": 0.5,
+        "y": 0.9464
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "V2",
+      "label": "V2",
+      "kind": "power",
+      "side": "bottom",
+      "position": {
+        "x": 0.7174,
+        "y": 0.9464
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "PE",
+      "label": "PE",
+      "kind": "earth",
+      "side": "right",
+      "position": {
+        "x": 0.9348,
+        "y": 0.5
+      },
+      "connectionType": "screw"
+    }
+  ]
+}

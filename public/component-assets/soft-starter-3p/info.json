@@ -1,0 +1,126 @@
+{
+  "id": "soft-starter-3p",
+  "name": "Soft Starter 3 Phase",
+  "category": "motor",
+  "image": "physical.svg",
+  "imageSize": {
+    "width": 92,
+    "height": 112
+  },
+  "imageType": "ai-generated-illustration",
+  "imageSource": "Ilustrasi vektor generik ElectroLab dari SVG. Bukan foto produk pabrikan atau representasi merek/model tertentu.",
+  "imageLicense": null,
+  "terminalCount": 10,
+  "terminals": [
+    {
+      "id": "L1",
+      "label": "L1",
+      "kind": "power",
+      "side": "top",
+      "position": {
+        "x": 0.2826,
+        "y": 0.0536
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "L2",
+      "label": "L2",
+      "kind": "power",
+      "side": "top",
+      "position": {
+        "x": 0.5,
+        "y": 0.0536
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "L3",
+      "label": "L3",
+      "kind": "power",
+      "side": "top",
+      "position": {
+        "x": 0.7174,
+        "y": 0.0536
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "T1",
+      "label": "T1",
+      "kind": "power",
+      "side": "bottom",
+      "position": {
+        "x": 0.2826,
+        "y": 0.9464
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "T2",
+      "label": "T2",
+      "kind": "power",
+      "side": "bottom",
+      "position": {
+        "x": 0.5,
+        "y": 0.9464
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "T3",
+      "label": "T3",
+      "kind": "power",
+      "side": "bottom",
+      "position": {
+        "x": 0.7174,
+        "y": 0.9464
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "PE",
+      "label": "PE",
+      "kind": "earth",
+      "side": "right",
+      "position": {
+        "x": 0.9348,
+        "y": 0.5
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "A1",
+      "label": "A1",
+      "kind": "coil",
+      "side": "left",
+      "position": {
+        "x": 0.0652,
+        "y": 0.3214
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "A2",
+      "label": "A2",
+      "kind": "coil",
+      "side": "left",
+      "position": {
+        "x": 0.0652,
+        "y": 0.5
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "S1",
+      "label": "START",
+      "kind": "contact",
+      "side": "left",
+      "position": {
+        "x": 0.0652,
+        "y": 0.6786
+      },
+      "connectionType": "screw"
+    }
+  ]
+}

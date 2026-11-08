@@ -49,7 +49,7 @@ export function ComponentNode({ placed, def, selected, viewMode, connected, pend
           {viewMode === 'schematic' ? (
             <ComponentSymbol def={def} />
           ) : physicalImage ? (
-            <image href={physicalImage} x={0} y={0} width={w} height={h} preserveAspectRatio="xMidYMid meet" />
+            <image href={physicalImage} x={physicalImage.endsWith(".svg") ? -6 : 0} y={physicalImage.endsWith(".svg") ? -6 : 0} width={physicalImage.endsWith(".svg") ? w + 12 : w} height={physicalImage.endsWith(".svg") ? h + 12 : h} preserveAspectRatio="xMidYMid meet" />
           ) : (
             <g>
               <rect x={0} y={0} width={w} height={h} rx={4} fill="var(--body-fill)" stroke="var(--symbol-dim)" strokeDasharray="4 3" />

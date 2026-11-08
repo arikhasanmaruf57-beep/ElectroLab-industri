@@ -1,0 +1,38 @@
+{
+  "id": "voltmeter",
+  "name": "Voltmeter",
+  "category": "measurement",
+  "image": "physical.svg",
+  "imageSize": {
+    "width": 92,
+    "height": 112
+  },
+  "imageType": "ai-generated-illustration",
+  "imageSource": "Ilustrasi vektor generik ElectroLab dari SVG. Bukan foto produk pabrikan atau representasi merek/model tertentu.",
+  "imageLicense": null,
+  "terminalCount": 2,
+  "terminals": [
+    {
+      "id": "V+",
+      "label": "V+",
+      "kind": "probe",
+      "side": "top",
+      "position": {
+        "x": 0.5,
+        "y": 0.0536
+      },
+      "connectionType": "probe"
+    },
+    {
+      "id": "V-",
+      "label": "V−",
+      "kind": "probe",
+      "side": "bottom",
+      "position": {
+        "x": 0.5,
+        "y": 0.9464
+      },
+      "connectionType": "probe"
+    }
+  ]
+}

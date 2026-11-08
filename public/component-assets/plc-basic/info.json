@@ -1,0 +1,137 @@
+{
+  "id": "plc-basic",
+  "name": "PLC Kompak (4 DI / 4 DO)",
+  "category": "automation",
+  "image": "physical.svg",
+  "imageSize": {
+    "width": 92,
+    "height": 112
+  },
+  "imageType": "ai-generated-illustration",
+  "imageSource": "Ilustrasi vektor generik ElectroLab dari SVG. Bukan foto produk pabrikan atau representasi merek/model tertentu.",
+  "imageLicense": null,
+  "terminalCount": 11,
+  "terminals": [
+    {
+      "id": "24V",
+      "label": "+24V",
+      "kind": "dc-positive",
+      "side": "top",
+      "position": {
+        "x": 0.2826,
+        "y": 0.0536
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "0V",
+      "label": "0V",
+      "kind": "dc-negative",
+      "side": "top",
+      "position": {
+        "x": 0.5,
+        "y": 0.0536
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "PE",
+      "label": "PE",
+      "kind": "earth",
+      "side": "top",
+      "position": {
+        "x": 0.7174,
+        "y": 0.0536
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "I0",
+      "label": "I0.0",
+      "kind": "signal",
+      "side": "left",
+      "position": {
+        "x": 0.0652,
+        "y": 0.2321
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "I1",
+      "label": "I0.1",
+      "kind": "signal",
+      "side": "left",
+      "position": {
+        "x": 0.0652,
+        "y": 0.4107
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "I2",
+      "label": "I0.2",
+      "kind": "signal",
+      "side": "left",
+      "position": {
+        "x": 0.0652,
+        "y": 0.5893
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "I3",
+      "label": "I0.3",
+      "kind": "signal",
+      "side": "left",
+      "position": {
+        "x": 0.0652,
+        "y": 0.7679
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "Q0",
+      "label": "Q0.0",
+      "kind": "signal",
+      "side": "right",
+      "position": {
+        "x": 0.9348,
+        "y": 0.2321
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "Q1",
+      "label": "Q0.1",
+      "kind": "signal",
+      "side": "right",
+      "position": {
+        "x": 0.9348,
+        "y": 0.4107
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "Q2",
+      "label": "Q0.2",
+      "kind": "signal",
+      "side": "right",
+      "position": {
+        "x": 0.9348,
+        "y": 0.5893
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "Q3",
+      "label": "Q0.3",
+      "kind": "signal",
+      "side": "right",
+      "position": {
+        "x": 0.9348,
+        "y": 0.7679
+      },
+      "connectionType": "screw"
+    }
+  ]
+}

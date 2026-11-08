@@ -1,0 +1,49 @@
+{
+  "id": "multimeter",
+  "name": "Digital Multimeter",
+  "category": "measurement",
+  "image": "physical.svg",
+  "imageSize": {
+    "width": 92,
+    "height": 112
+  },
+  "imageType": "ai-generated-illustration",
+  "imageSource": "Ilustrasi vektor generik ElectroLab dari SVG. Bukan foto produk pabrikan atau representasi merek/model tertentu.",
+  "imageLicense": null,
+  "terminalCount": 3,
+  "terminals": [
+    {
+      "id": "COM",
+      "label": "COM",
+      "kind": "probe",
+      "side": "bottom",
+      "position": {
+        "x": 0.2826,
+        "y": 0.9464
+      },
+      "connectionType": "probe"
+    },
+    {
+      "id": "V",
+      "label": "VΩ",
+      "kind": "probe",
+      "side": "bottom",
+      "position": {
+        "x": 0.5,
+        "y": 0.9464
+      },
+      "connectionType": "probe"
+    },
+    {
+      "id": "A",
+      "label": "A",
+      "kind": "probe",
+      "side": "bottom",
+      "position": {
+        "x": 0.7174,
+        "y": 0.9464
+      },
+      "connectionType": "probe"
+    }
+  ]
+}

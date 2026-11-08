@@ -1,0 +1,104 @@
+{
+  "id": "busbar-phase",
+  "name": "Busbar Fase",
+  "category": "wiring",
+  "image": "physical.svg",
+  "imageSize": {
+    "width": 112,
+    "height": 112
+  },
+  "imageType": "ai-generated-illustration",
+  "imageSource": "Ilustrasi vektor generik ElectroLab dari SVG. Bukan foto produk pabrikan atau representasi merek/model tertentu.",
+  "imageLicense": null,
+  "terminalCount": 8,
+  "terminals": [
+    {
+      "id": "T-L1",
+      "label": "T-L1",
+      "kind": "power",
+      "side": "top",
+      "position": {
+        "x": 0.2321,
+        "y": 0.0536
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "T-L2",
+      "label": "T-L2",
+      "kind": "power",
+      "side": "top",
+      "position": {
+        "x": 0.4107,
+        "y": 0.0536
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "T-L3",
+      "label": "T-L3",
+      "kind": "power",
+      "side": "top",
+      "position": {
+        "x": 0.5893,
+        "y": 0.0536
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "T-L4",
+      "label": "T-L4",
+      "kind": "power",
+      "side": "top",
+      "position": {
+        "x": 0.7679,
+        "y": 0.0536
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "B-L1",
+      "label": "B-L1",
+      "kind": "power",
+      "side": "bottom",
+      "position": {
+        "x": 0.2321,
+        "y": 0.9464
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "B-L2",
+      "label": "B-L2",
+      "kind": "power",
+      "side": "bottom",
+      "position": {
+        "x": 0.4107,
+        "y": 0.9464
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "B-L3",
+      "label": "B-L3",
+      "kind": "power",
+      "side": "bottom",
+      "position": {
+        "x": 0.5893,
+        "y": 0.9464
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "B-L4",
+      "label": "B-L4",
+      "kind": "power",
+      "side": "bottom",
+      "position": {
+        "x": 0.7679,
+        "y": 0.9464
+      },
+      "connectionType": "screw"
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "id": "switch-double",
+  "name": "Saklar Seri",
+  "category": "switching",
+  "image": "physical.svg",
+  "imageSize": {
+    "width": 92,
+    "height": 112
+  },
+  "imageType": "ai-generated-illustration",
+  "imageSource": "Ilustrasi vektor generik ElectroLab dari SVG. Bukan foto produk pabrikan atau representasi merek/model tertentu.",
+  "imageLicense": null,
+  "terminalCount": 4,
+  "terminals": [
+    {
+      "id": "1",
+      "label": "IN 1",
+      "kind": "power",
+      "side": "top",
+      "position": {
+        "x": 0.3913,
+        "y": 0.0536
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "3",
+      "label": "IN 2",
+      "kind": "power",
+      "side": "top",
+      "position": {
+        "x": 0.6087,
+        "y": 0.0536
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "2",
+      "label": "OUT 1",
+      "kind": "power",
+      "side": "bottom",
+      "position": {
+        "x": 0.3913,
+        "y": 0.9464
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "4",
+      "label": "OUT 2",
+      "kind": "power",
+      "side": "bottom",
+      "position": {
+        "x": 0.6087,
+        "y": 0.9464
+      },
+      "connectionType": "screw"
+    }
+  ]
+}

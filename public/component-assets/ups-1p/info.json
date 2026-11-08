@@ -1,0 +1,82 @@
+{
+  "id": "ups-1p",
+  "name": "UPS 1 Phase",
+  "category": "power-source",
+  "image": "physical.svg",
+  "imageSize": {
+    "width": 92,
+    "height": 112
+  },
+  "imageType": "ai-generated-illustration",
+  "imageSource": "Ilustrasi vektor generik ElectroLab dari SVG. Bukan foto produk pabrikan atau representasi merek/model tertentu.",
+  "imageLicense": null,
+  "terminalCount": 6,
+  "terminals": [
+    {
+      "id": "IN-L",
+      "label": "IN L",
+      "kind": "power",
+      "side": "top",
+      "position": {
+        "x": 0.2826,
+        "y": 0.0536
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "IN-N",
+      "label": "IN N",
+      "kind": "neutral",
+      "side": "top",
+      "position": {
+        "x": 0.5,
+        "y": 0.0536
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "IN-PE",
+      "label": "IN PE",
+      "kind": "earth",
+      "side": "top",
+      "position": {
+        "x": 0.7174,
+        "y": 0.0536
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "OUT-L",
+      "label": "OUT L",
+      "kind": "power",
+      "side": "bottom",
+      "position": {
+        "x": 0.2826,
+        "y": 0.9464
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "OUT-N",
+      "label": "OUT N",
+      "kind": "neutral",
+      "side": "bottom",
+      "position": {
+        "x": 0.5,
+        "y": 0.9464
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "OUT-PE",
+      "label": "OUT PE",
+      "kind": "earth",
+      "side": "bottom",
+      "position": {
+        "x": 0.7174,
+        "y": 0.9464
+      },
+      "connectionType": "screw"
+    }
+  ]
+}
