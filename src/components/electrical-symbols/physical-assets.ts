@@ -80,3 +80,407 @@ const PHYSICAL_ASSETS: Record<string, string> = {
 export function getPhysicalAsset(def: ComponentDefinition): string | undefined {
   return PHYSICAL_ASSETS[def.type];
 }
+
+
+/** Posisi baut terminal untuk PNG yang tidak memakai layout tepi standar. */
+const PNG_TERMINALS: Record<string, { imageSize: { width: number; height: number }; terminals: Record<string, { x: number; y: number }> }> = {
+  "fuse-1p": {
+    "imageSize": {
+      "width": 1280,
+      "height": 1280
+    },
+    "terminals": {
+      "1": {
+        "x": 0.5,
+        "y": 0.1607
+      },
+      "2": {
+        "x": 0.5,
+        "y": 0.8339
+      }
+    }
+  },
+  "main-switch-3p": {
+    "imageSize": {
+      "width": 1280,
+      "height": 1280
+    },
+    "terminals": {
+      "1": {
+        "x": 0.2946,
+        "y": 0.1607
+      },
+      "2": {
+        "x": 0.2946,
+        "y": 0.8339
+      },
+      "3": {
+        "x": 0.5,
+        "y": 0.1607
+      },
+      "4": {
+        "x": 0.5,
+        "y": 0.8339
+      },
+      "5": {
+        "x": 0.7054,
+        "y": 0.1607
+      },
+      "6": {
+        "x": 0.7054,
+        "y": 0.8339
+      }
+    }
+  },
+  "mcb-2p": {
+    "imageSize": {
+      "width": 1280,
+      "height": 1280
+    },
+    "terminals": {
+      "1": {
+        "x": 0.3973,
+        "y": 0.1607
+      },
+      "2": {
+        "x": 0.3973,
+        "y": 0.8339
+      },
+      "3": {
+        "x": 0.6027,
+        "y": 0.1607
+      },
+      "4": {
+        "x": 0.6027,
+        "y": 0.8339
+      }
+    }
+  },
+  "mcb-3p": {
+    "imageSize": {
+      "width": 1280,
+      "height": 1280
+    },
+    "terminals": {
+      "1": {
+        "x": 0.2946,
+        "y": 0.1607
+      },
+      "2": {
+        "x": 0.2946,
+        "y": 0.8339
+      },
+      "3": {
+        "x": 0.5,
+        "y": 0.1607
+      },
+      "4": {
+        "x": 0.5,
+        "y": 0.8339
+      },
+      "5": {
+        "x": 0.7054,
+        "y": 0.1607
+      },
+      "6": {
+        "x": 0.7054,
+        "y": 0.8339
+      }
+    }
+  },
+  "mcb-4p": {
+    "imageSize": {
+      "width": 1280,
+      "height": 1280
+    },
+    "terminals": {
+      "1": {
+        "x": 0.207,
+        "y": 0.1775
+      },
+      "2": {
+        "x": 0.207,
+        "y": 0.8174
+      },
+      "3": {
+        "x": 0.4023,
+        "y": 0.1775
+      },
+      "4": {
+        "x": 0.4023,
+        "y": 0.8174
+      },
+      "5": {
+        "x": 0.5977,
+        "y": 0.1775
+      },
+      "6": {
+        "x": 0.5977,
+        "y": 0.8174
+      },
+      "7": {
+        "x": 0.793,
+        "y": 0.1775
+      },
+      "8": {
+        "x": 0.793,
+        "y": 0.8174
+      }
+    }
+  },
+  "mccb-3p": {
+    "imageSize": {
+      "width": 1280,
+      "height": 1280
+    },
+    "terminals": {
+      "1": {
+        "x": 0.3047,
+        "y": 0.181
+      },
+      "2": {
+        "x": 0.3047,
+        "y": 0.819
+      },
+      "3": {
+        "x": 0.5,
+        "y": 0.181
+      },
+      "4": {
+        "x": 0.5,
+        "y": 0.819
+      },
+      "5": {
+        "x": 0.6953,
+        "y": 0.181
+      },
+      "6": {
+        "x": 0.6953,
+        "y": 0.819
+      }
+    }
+  },
+  "mpcb-3p": {
+    "imageSize": {
+      "width": 1280,
+      "height": 1280
+    },
+    "terminals": {
+      "1": {
+        "x": 0.3504,
+        "y": 0.1792
+      },
+      "2": {
+        "x": 0.3504,
+        "y": 0.8208
+      },
+      "3": {
+        "x": 0.5,
+        "y": 0.1792
+      },
+      "4": {
+        "x": 0.5,
+        "y": 0.8208
+      },
+      "5": {
+        "x": 0.6496,
+        "y": 0.1792
+      },
+      "6": {
+        "x": 0.6496,
+        "y": 0.8208
+      }
+    }
+  },
+  "rcbo-2p": {
+    "imageSize": {
+      "width": 1280,
+      "height": 1280
+    },
+    "terminals": {
+      "1": {
+        "x": 0.3973,
+        "y": 0.1607
+      },
+      "2": {
+        "x": 0.3973,
+        "y": 0.8339
+      },
+      "3": {
+        "x": 0.6027,
+        "y": 0.1607
+      },
+      "4": {
+        "x": 0.6027,
+        "y": 0.8339
+      }
+    }
+  },
+  "rccb-2p": {
+    "imageSize": {
+      "width": 1280,
+      "height": 1280
+    },
+    "terminals": {
+      "1": {
+        "x": 0.3973,
+        "y": 0.1607
+      },
+      "2": {
+        "x": 0.3973,
+        "y": 0.8339
+      },
+      "3": {
+        "x": 0.6027,
+        "y": 0.1607
+      },
+      "4": {
+        "x": 0.6027,
+        "y": 0.8339
+      }
+    }
+  },
+  "rccb-4p": {
+    "imageSize": {
+      "width": 1280,
+      "height": 1280
+    },
+    "terminals": {
+      "1": {
+        "x": 0.207,
+        "y": 0.1775
+      },
+      "2": {
+        "x": 0.207,
+        "y": 0.8174
+      },
+      "3": {
+        "x": 0.4023,
+        "y": 0.1775
+      },
+      "4": {
+        "x": 0.4023,
+        "y": 0.8174
+      },
+      "5": {
+        "x": 0.5977,
+        "y": 0.1775
+      },
+      "6": {
+        "x": 0.5977,
+        "y": 0.8174
+      },
+      "7": {
+        "x": 0.793,
+        "y": 0.1775
+      },
+      "8": {
+        "x": 0.793,
+        "y": 0.8174
+      }
+    }
+  },
+  "spd-1p": {
+    "imageSize": {
+      "width": 1280,
+      "height": 1280
+    },
+    "terminals": {
+      "L": {
+        "x": 0.3973,
+        "y": 0.1607
+      },
+      "N": {
+        "x": 0.6027,
+        "y": 0.1607
+      },
+      "PE1": {
+        "x": 0.3973,
+        "y": 0.8339
+      },
+      "PE2": {
+        "x": 0.6027,
+        "y": 0.8339
+      }
+    }
+  },
+  "tor-3p": {
+    "imageSize": {
+      "width": 1280,
+      "height": 1280
+    },
+    "terminals": {
+      "1": {
+        "x": 0.2939,
+        "y": 0.1792
+      },
+      "2": {
+        "x": 0.2939,
+        "y": 0.8208
+      },
+      "3": {
+        "x": 0.4202,
+        "y": 0.1792
+      },
+      "4": {
+        "x": 0.4202,
+        "y": 0.8208
+      },
+      "5": {
+        "x": 0.5465,
+        "y": 0.1792
+      },
+      "6": {
+        "x": 0.5465,
+        "y": 0.8208
+      },
+      "95": {
+        "x": 0.6729,
+        "y": 0.1792
+      },
+      "96": {
+        "x": 0.6729,
+        "y": 0.8208
+      },
+      "97": {
+        "x": 0.756,
+        "y": 0.1792
+      },
+      "98": {
+        "x": 0.756,
+        "y": 0.8208
+      }
+    }
+  },
+  "mcb-1p": {
+    "imageSize": {
+      "width": 1400,
+      "height": 1400
+    },
+    "terminals": {
+      "1": {
+        "x": 0.5,
+        "y": 0.16
+      },
+      "2": {
+        "x": 0.5,
+        "y": 0.84
+      }
+    }
+  }
+};
+
+export function getPhysicalLayout(def: ComponentDefinition) {
+  const meta = PNG_TERMINALS[def.type];
+  if (!meta) return def.layout;
+  const scale = Math.min(def.layout.width / meta.imageSize.width, def.layout.height / meta.imageSize.height);
+  const renderedWidth = meta.imageSize.width * scale;
+  const renderedHeight = meta.imageSize.height * scale;
+  const offsetX = (def.layout.width - renderedWidth) / 2;
+  const offsetY = (def.layout.height - renderedHeight) / 2;
+  const terminals = { ...def.layout.terminals };
+  for (const [id, point] of Object.entries(meta.terminals)) {
+    terminals[id] = { x: offsetX + point.x * renderedWidth, y: offsetY + point.y * renderedHeight };
+  }
+  return { ...def.layout, terminals };
+}

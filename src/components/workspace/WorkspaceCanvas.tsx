@@ -4,20 +4,22 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { getComponentDefinition } from '@/data/components';
 import { terminalWorld, type Bounds } from '@/electrical-engine/core/geometry';
 import { checkConnection, pointsToPath, routeWire, sameRef, type Anchor } from '@/electrical-engine/connections';
-import { useSettingsStore } from '@/store/settings-store';
+import { useSettingsStore, type ComponentViewMode } from '@/store/settings-store';
 import { useWorkspaceStore } from '@/store/workspace-store';
 import { TERMINAL_KIND_LABELS } from '@/types/electrical';
 import type { Point, TerminalRef, WorkspaceDocument } from '@/types/workspace';
 import { ComponentNode, type PendingState } from './ComponentNode';
+import { getPhysicalLayout } from '../electrical-symbols/physical-assets';
 
 export const LIBRARY_DRAG_TYPE = 'application/x-esim-component';
 
-function anchorOf(doc: WorkspaceDocument, ref: TerminalRef): Anchor | null {
+function anchorOf(doc: WorkspaceDocument, ref: TerminalRef, viewMode: ComponentViewMode): Anchor | null {
   const placed = doc.components.find((c) => c.id === ref.componentId);
   const def = placed && getComponentDefinition(placed.type);
   const t = def?.terminals.find((x) => x.id === ref.terminalId);
   if (!placed || !def || !t) return null;
-  return terminalWorld(placed, def.layout, t.side, t.id);
+  const layout = viewMode === 'physical' ? getPhysicalLayout(def) : def.layout;
+  return terminalWorld(placed, layout, t.side, t.id);
 }
 
 export function WorkspaceCanvas() {
@@ -240,7 +242,7 @@ export function WorkspaceCanvas() {
 
   const hoverInfo = useMemo(() => {
     if (!hover) return null;
-    const a = anchorOf(doc, hover);
+    const a = anchorOf(doc, hover, componentViewMode);
     const placed = doc.components.find((c) => c.id === hover.componentId);
     const def = placed && getComponentDefinition(placed.type);
     const t = def?.terminals.find((x) => x.id === hover.terminalId);
@@ -257,7 +259,7 @@ export function WorkspaceCanvas() {
     return { a, text, bad };
   }, [hover, doc, pendingFrom]);
 
-  const pendingAnchor = pendingFrom ? anchorOf(doc, pendingFrom) : null;
+  const pendingAnchor = pendingFrom ? anchorOf(doc, pendingFrom, componentViewMode) : null;
   const selectedWires = new Set(selection.wires);
   const selectedComps = new Set(selection.components);
 
@@ -300,8 +302,8 @@ export function WorkspaceCanvas() {
         <g transform={`translate(${viewport.x} ${viewport.y}) scale(${viewport.zoom})`}>
           {/* kabel */}
           {doc.wires.map((w) => {
-            const a = anchorOf(doc, w.from);
-            const b = anchorOf(doc, w.to);
+            const a = anchorOf(doc, w.from, componentViewMode);
+            const b = anchorOf(doc, w.to, componentViewMode);
             if (!a || !b) return null;
             const d = pointsToPath(routeWire(a, b));
             const sel = selectedWires.has(w.id);

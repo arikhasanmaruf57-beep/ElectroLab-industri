@@ -2,7 +2,7 @@ import type { ComponentDefinition } from '@/types/component';
 import type { TerminalDefinition } from '@/types/electrical';
 import type { PlacedComponent, TerminalRef } from '@/types/workspace';
 import { ComponentSymbol } from '../electrical-symbols/ComponentSymbol';
-import { getPhysicalAsset } from '../electrical-symbols/physical-assets';
+import { getPhysicalAsset, getPhysicalLayout } from '../electrical-symbols/physical-assets';
 import type { ComponentViewMode } from '@/store/settings-store';
 import { TERMINAL_COLORS } from '../electrical-symbols/terminal-style';
 
@@ -40,6 +40,7 @@ export function ComponentNode({ placed, def, selected, viewMode, connected, pend
   const cx = placed.x + w / 2;
   const cy = placed.y + h / 2;
   const physicalImage = viewMode === 'physical' ? getPhysicalAsset(def) : undefined;
+  const terminalLayout = viewMode === 'physical' ? getPhysicalLayout(def) : def.layout;
 
   return (
     <g data-testid="component" data-component-id={placed.id} data-type={def.type} data-label={placed.label} data-display-mode={viewMode}>
@@ -62,7 +63,7 @@ export function ComponentNode({ placed, def, selected, viewMode, connected, pend
           <rect x={-6} y={-6} width={w + 12} height={h + 12} rx={5} fill="none" stroke="var(--accent)" strokeWidth={1.4} strokeDasharray="5 3" pointerEvents="none" />
         )}
         {def.terminals.map((t) => {
-          const p = def.layout.terminals[t.id];
+          const p = terminalLayout.terminals[t.id];
           if (!p) return null;
           const color = TERMINAL_COLORS[t.kind];
           const isConnected = connected?.has(t.id) ?? false;
