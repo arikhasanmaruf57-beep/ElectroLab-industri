@@ -1,0 +1,42 @@
+{
+  "id": "fuse-1p",
+  "name": "Fuse + Fuse Holder",
+  "category": "protection",
+  "designator": "F",
+  "description": "Sekring lebur satu kutub pada dudukan sekring.",
+  "image": "physical.png",
+  "imageSize": {
+    "width": 1280,
+    "height": 1280
+  },
+  "imageType": "ai-generated-illustration",
+  "imageSource": "Ilustrasi vektor hasil karya AI: kode SVG (gradien, bayangan) ditulis oleh Claude (Anthropic) lalu dirender ke PNG. Bentuk generik tanpa merek, logo, atau rating; bukan foto produk dan bukan keluaran model pembuat gambar. Gaya mengikuti aset mcb-1p.",
+  "imageLicense": null,
+  "terminalCount": 2,
+  "terminals": [
+    {
+      "id": "1",
+      "label": "LINE",
+      "kind": "power",
+      "side": "top",
+      "phase": "L",
+      "position": {
+        "x": 0.5,
+        "y": 0.1607
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "2",
+      "label": "LOAD",
+      "kind": "power",
+      "side": "bottom",
+      "phase": "L",
+      "position": {
+        "x": 0.5,
+        "y": 0.8339
+      },
+      "connectionType": "screw"
+    }
+  ]
+}
