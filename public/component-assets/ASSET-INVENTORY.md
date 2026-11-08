@@ -125,3 +125,21 @@ Yang **tidak** dapat diperiksa otomatis: apakah bentuk suatu komponen "meyakinka
 - Posisi terminal mengikuti `side` di katalog (`top`/`bottom`/`left`/`right`) dan urutan definisi kiri ke kanan (atau atas ke bawah). Mis. kutub ke-i di sisi atas berpasangan dengan kutub ke-i di sisi bawah, seperti `poleDevice()` di `factories.ts`.
 - Perangkat dengan terminal baut digambar dengan baut terlihat. Perangkat dengan konektor plug-in/soket digambar dengan konektor yang sesuai dan `connectionType` yang sesuai (bukan dipaksa baut).
 - `src/electrical-engine/terminal-system/layout.ts` tidak ada di ZIP yang diberikan; tidak memengaruhi aset ini karena posisi terminal pada gambar fisik dihitung terpisah dari tata letak simbol.
+
+
+## Katalog lengkap di branch `feature/component-display-modes`
+
+Semua 73 komponen katalog sekarang memiliki aset fisik terdaftar. Aset Protection yang dibuat sebelumnya menggunakan PNG; aset kategori lainnya menggunakan SVG vektor agar titik terminal dapat disejajarkan dengan layout Workspace.
+
+- Protection: 13 komponen
+- Control: 12 komponen
+- Switching: 8 komponen
+- Motor: 5 komponen
+- Lighting: 6 komponen
+- Wiring: 4 komponen
+- Measurement: 4 komponen
+- Automation: 7 komponen
+- Power Sources: 9 komponen
+- Accessories: 5 komponen
+
+Ilustrasi SVG bersifat generik, bukan foto pabrikan. Setiap folder memuat `physical.svg`, `info.json`, dan `README.md`.

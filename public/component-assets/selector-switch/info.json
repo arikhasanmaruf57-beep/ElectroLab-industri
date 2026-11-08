@@ -4,11 +4,11 @@
   "category": "control",
   "image": "physical.svg",
   "imageSize": {
-    "width": 80,
-    "height": 100
+    "width": 92,
+    "height": 112
   },
   "imageType": "ai-generated-illustration",
-  "imageSource": "Ilustrasi vektor generik ElectroLab dari SVG; bukan foto produk pabrikan dan bukan representasi merek tertentu.",
+  "imageSource": "Ilustrasi vektor generik ElectroLab dari SVG; bukan foto produk pabrikan dan tidak mewakili merek/model tertentu.",
   "imageLicense": null,
   "terminalCount": 4,
   "terminals": [
@@ -18,8 +18,8 @@
       "kind": "contact",
       "side": "top",
       "position": {
-        "x": 0.375,
-        "y": 0
+        "x": 0.3913,
+        "y": 0.0536
       },
       "connectionType": "screw"
     },
@@ -29,8 +29,8 @@
       "kind": "contact",
       "side": "top",
       "position": {
-        "x": 0.625,
-        "y": 0
+        "x": 0.6087,
+        "y": 0.0536
       },
       "connectionType": "screw"
     },
@@ -40,8 +40,8 @@
       "kind": "contact",
       "side": "bottom",
       "position": {
-        "x": 0.375,
-        "y": 1
+        "x": 0.3913,
+        "y": 0.9464
       },
       "connectionType": "screw"
     },
@@ -51,8 +51,8 @@
       "kind": "contact",
       "side": "bottom",
       "position": {
-        "x": 0.625,
-        "y": 1
+        "x": 0.6087,
+        "y": 0.9464
       },
       "connectionType": "screw"
     }

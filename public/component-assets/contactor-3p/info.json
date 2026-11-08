@@ -4,44 +4,44 @@
   "category": "control",
   "image": "physical.svg",
   "imageSize": {
-    "width": 140,
-    "height": 100
+    "width": 152,
+    "height": 112
   },
   "imageType": "ai-generated-illustration",
-  "imageSource": "Ilustrasi vektor generik ElectroLab dari SVG; bukan foto produk pabrikan dan bukan representasi merek tertentu.",
+  "imageSource": "Ilustrasi vektor generik ElectroLab dari SVG; bukan foto produk pabrikan dan tidak mewakili merek/model tertentu.",
   "imageLicense": null,
   "terminalCount": 12,
   "terminals": [
     {
       "id": "1",
       "label": "1",
-      "kind": "contact",
+      "kind": "power",
       "side": "top",
       "position": {
-        "x": 0.1429,
-        "y": 0
+        "x": 0.1711,
+        "y": 0.0536
       },
       "connectionType": "screw"
     },
     {
       "id": "3",
       "label": "3",
-      "kind": "contact",
+      "kind": "power",
       "side": "top",
       "position": {
-        "x": 0.2857,
-        "y": 0
+        "x": 0.3026,
+        "y": 0.0536
       },
       "connectionType": "screw"
     },
     {
       "id": "5",
       "label": "5",
-      "kind": "contact",
+      "kind": "power",
       "side": "top",
       "position": {
-        "x": 0.4286,
-        "y": 0
+        "x": 0.4342,
+        "y": 0.0536
       },
       "connectionType": "screw"
     },
@@ -51,8 +51,8 @@
       "kind": "contact",
       "side": "top",
       "position": {
-        "x": 0.5714,
-        "y": 0
+        "x": 0.5658,
+        "y": 0.0536
       },
       "connectionType": "screw"
     },
@@ -62,52 +62,52 @@
       "kind": "contact",
       "side": "top",
       "position": {
-        "x": 0.7143,
-        "y": 0
+        "x": 0.6974,
+        "y": 0.0536
       },
       "connectionType": "screw"
     },
     {
       "id": "A1",
       "label": "A1",
-      "kind": "contact",
+      "kind": "coil",
       "side": "top",
       "position": {
-        "x": 0.8571,
-        "y": 0
+        "x": 0.8289,
+        "y": 0.0536
       },
       "connectionType": "screw"
     },
     {
       "id": "2",
       "label": "2",
-      "kind": "contact",
+      "kind": "power",
       "side": "bottom",
       "position": {
-        "x": 0.1429,
-        "y": 1
+        "x": 0.1711,
+        "y": 0.9464
       },
       "connectionType": "screw"
     },
     {
       "id": "4",
       "label": "4",
-      "kind": "contact",
+      "kind": "power",
       "side": "bottom",
       "position": {
-        "x": 0.2857,
-        "y": 1
+        "x": 0.3026,
+        "y": 0.9464
       },
       "connectionType": "screw"
     },
     {
       "id": "6",
       "label": "6",
-      "kind": "contact",
+      "kind": "power",
       "side": "bottom",
       "position": {
-        "x": 0.4286,
-        "y": 1
+        "x": 0.4342,
+        "y": 0.9464
       },
       "connectionType": "screw"
     },
@@ -117,8 +117,8 @@
       "kind": "contact",
       "side": "bottom",
       "position": {
-        "x": 0.5714,
-        "y": 1
+        "x": 0.5658,
+        "y": 0.9464
       },
       "connectionType": "screw"
     },
@@ -128,19 +128,19 @@
       "kind": "contact",
       "side": "bottom",
       "position": {
-        "x": 0.7143,
-        "y": 1
+        "x": 0.6974,
+        "y": 0.9464
       },
       "connectionType": "screw"
     },
     {
       "id": "A2",
       "label": "A2",
-      "kind": "contact",
+      "kind": "coil",
       "side": "bottom",
       "position": {
-        "x": 0.8571,
-        "y": 1
+        "x": 0.8289,
+        "y": 0.9464
       },
       "connectionType": "screw"
     }
