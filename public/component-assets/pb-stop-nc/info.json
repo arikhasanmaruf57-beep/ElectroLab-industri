@@ -1,0 +1,38 @@
+{
+  "id": "pb-stop-nc",
+  "name": "Push Button STOP (NC)",
+  "category": "control",
+  "image": "physical.svg",
+  "imageSize": {
+    "width": 80,
+    "height": 100
+  },
+  "imageType": "ai-generated-illustration",
+  "imageSource": "Ilustrasi vektor generik ElectroLab dari SVG; bukan foto produk pabrikan dan bukan representasi merek tertentu.",
+  "imageLicense": null,
+  "terminalCount": 2,
+  "terminals": [
+    {
+      "id": "1",
+      "label": "1",
+      "kind": "contact",
+      "side": "top",
+      "position": {
+        "x": 0.5,
+        "y": 0
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "2",
+      "label": "2",
+      "kind": "contact",
+      "side": "bottom",
+      "position": {
+        "x": 0.5,
+        "y": 1
+      },
+      "connectionType": "screw"
+    }
+  ]
+}

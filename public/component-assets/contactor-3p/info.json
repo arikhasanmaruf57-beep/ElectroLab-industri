@@ -1,0 +1,148 @@
+{
+  "id": "contactor-3p",
+  "name": "Kontaktor 3 Pole (koil AC)",
+  "category": "control",
+  "image": "physical.svg",
+  "imageSize": {
+    "width": 140,
+    "height": 100
+  },
+  "imageType": "ai-generated-illustration",
+  "imageSource": "Ilustrasi vektor generik ElectroLab dari SVG; bukan foto produk pabrikan dan bukan representasi merek tertentu.",
+  "imageLicense": null,
+  "terminalCount": 12,
+  "terminals": [
+    {
+      "id": "1",
+      "label": "1",
+      "kind": "contact",
+      "side": "top",
+      "position": {
+        "x": 0.1429,
+        "y": 0
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "3",
+      "label": "3",
+      "kind": "contact",
+      "side": "top",
+      "position": {
+        "x": 0.2857,
+        "y": 0
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "5",
+      "label": "5",
+      "kind": "contact",
+      "side": "top",
+      "position": {
+        "x": 0.4286,
+        "y": 0
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "13",
+      "label": "13",
+      "kind": "contact",
+      "side": "top",
+      "position": {
+        "x": 0.5714,
+        "y": 0
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "21",
+      "label": "21",
+      "kind": "contact",
+      "side": "top",
+      "position": {
+        "x": 0.7143,
+        "y": 0
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "A1",
+      "label": "A1",
+      "kind": "contact",
+      "side": "top",
+      "position": {
+        "x": 0.8571,
+        "y": 0
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "2",
+      "label": "2",
+      "kind": "contact",
+      "side": "bottom",
+      "position": {
+        "x": 0.1429,
+        "y": 1
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "4",
+      "label": "4",
+      "kind": "contact",
+      "side": "bottom",
+      "position": {
+        "x": 0.2857,
+        "y": 1
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "6",
+      "label": "6",
+      "kind": "contact",
+      "side": "bottom",
+      "position": {
+        "x": 0.4286,
+        "y": 1
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "14",
+      "label": "14",
+      "kind": "contact",
+      "side": "bottom",
+      "position": {
+        "x": 0.5714,
+        "y": 1
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "22",
+      "label": "22",
+      "kind": "contact",
+      "side": "bottom",
+      "position": {
+        "x": 0.7143,
+        "y": 1
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "A2",
+      "label": "A2",
+      "kind": "contact",
+      "side": "bottom",
+      "position": {
+        "x": 0.8571,
+        "y": 1
+      },
+      "connectionType": "screw"
+    }
+  ]
+}
