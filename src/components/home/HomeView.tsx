@@ -24,7 +24,7 @@ export function HomeView() {
               <Link href="/workspace" className="inline-flex h-11 items-center gap-2 rounded-lg bg-accent px-5 text-sm font-semibold text-accent-ink shadow-lg shadow-accent/15 transition duration-200 hover:-translate-y-0.5 hover:brightness-110">Mulai simulasi <Icon name="chevron" size={16} /></Link>
               <Link href="/learning" className="inline-flex h-11 items-center gap-2 rounded-lg border border-line bg-bg/60 px-5 text-sm font-medium text-ink transition duration-200 hover:border-accent/50 hover:bg-raised">Jelajahi materi <Icon name="book" size={16} /></Link>
             </div>
-            <div className="mt-9 flex flex-wrap gap-x-7 gap-y-3 border-t border-line pt-5 text-xs text-muted"><span className="inline-flex items-center gap-2"><Icon name="check" size={14} className="text-ok" /> Belajar berbasis praktik</span><span className="inline-flex items-center gap-2"><Icon name="bolt" size={14} className="text-accent" /> Fokus kelistrikan industri</span><span className="inline-flex items-center gap-2"><Icon name="monitor" size={14} className="text-accent" /> Berjalan di browser</span></div>
+            <div className="mt-9 flex flex-wrap gap-x-7 gap-y-3 border-t border-line pt-5 text-xs text-muted"><span className="inline-flex items-center gap-2"><Icon name="check" size={14} className="text-ok" /> Belajar berbasis praktik</span><span className="inline-flex items-center gap-2"><Icon name="bolt" size={14} className="text-accent" /> Fokus kelistrikan industri</span><span className="inline-flex items-center gap-2"><Icon name="workspace" size={14} className="text-accent" /> Berjalan di browser</span></div>
           </div>
           <div className="relative mx-auto w-full max-w-xl">
             <div className="absolute inset-8 rounded-full bg-accent/10 blur-3xl" aria-hidden="true" />
@@ -59,7 +59,7 @@ export function HomeView() {
             <p className="text-xs font-semibold uppercase tracking-[0.15em] text-accent">Di balik ElectroLab</p>
             <h2 className="mt-3 text-3xl font-semibold tracking-[-0.04em] text-ink sm:text-4xl">Hai, saya <span className="text-accent">aerikhm.</span></h2>
             <p className="mt-3 text-sm leading-6 text-muted">Senang belajar, bereksperimen, dan membangun sesuatu.</p>
-            <div className="mt-6 inline-flex items-center gap-2 rounded-lg border border-line bg-surface px-3 py-2 text-xs text-muted"><Icon name="user" size={15} className="text-accent" /> Creator & learner</div>
+            <div className="mt-6 inline-flex items-center gap-2 rounded-lg border border-line bg-surface px-3 py-2 text-xs text-muted"><Icon name="bolt" size={15} className="text-accent" /> Creator & learner</div>
           </div>
           <div className="max-w-3xl space-y-4 text-sm leading-7 text-muted sm:text-base sm:leading-8">
             <p>Saya memiliki latar belakang Teknik Instalasi Tenaga Listrik dan sedang melanjutkan perjalanan belajar di bidang Teknik Elektro. Ketertarikan saya ada pada dunia kelistrikan, sistem kontrol, dan teknologi yang bisa membantu proses belajar menjadi lebih mudah dipahami.</p>
