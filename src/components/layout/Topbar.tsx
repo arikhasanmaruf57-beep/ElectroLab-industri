@@ -62,6 +62,7 @@ export function Topbar({ compact = false }: { compact?: boolean }) {
             { href: '/component-library', label: 'Komponen' },
             { href: '/learning', label: 'Belajar' },
             { href: '/workspace', label: 'Workspace' },
+            { href: '/circuit-studio', label: 'Circuit Studio' },
           ].map((item) => {
             const active = item.href === '/' ? isHome : pathname === item.href || pathname.startsWith(item.href + '/');
             return (
