@@ -63,7 +63,11 @@
 
 html,
 body {
-  height: 100%;
+  min-height: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -100,6 +104,23 @@ button:not(:disabled),
 }
 .toast-in { animation: toast-in 160ms ease-out; }
 
+@keyframes home-rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.home-enter { animation: home-rise 520ms cubic-bezier(.2,.7,.2,1) both; }
+.home-card { animation: home-rise 420ms ease-out both; }
+
+@keyframes circuit-dash {
+  to { stroke-dashoffset: -20; }
+}
+.circuit-flow { animation: circuit-dash 2.4s linear infinite; }
+
 @media (prefers-reduced-motion: reduce) {
-  .toast-in { animation: none; }
+  html { scroll-behavior: auto; }
+  .toast-in,
+  .home-enter,
+  .home-card,
+  .circuit-flow { animation: none !important; }
+  *, *::before, *::after { transition-duration: 0.01ms !important; }
 }
