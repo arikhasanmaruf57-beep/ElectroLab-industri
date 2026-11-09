@@ -23,7 +23,16 @@ export function LibraryPage() {
   const selected = results.find((c) => c.type === selectedType) ?? results[0];
 
   return (
-    <div className="mx-auto flex h-full max-w-[1400px] flex-col gap-4 p-5 lg:flex-row">
+    <div className="mx-auto flex min-h-full w-full max-w-[1440px] flex-col gap-5 p-4 sm:p-6">
+      <header className="flex flex-wrap items-end justify-between gap-4 rounded-xl border border-line bg-surface px-5 py-5 sm:px-7">
+        <div>
+          <p className="text-[11px] font-semibold uppercase tracking-[0.15em] text-accent">Referensi kelistrikan</p>
+          <h1 className="mt-2 text-2xl font-semibold tracking-tight text-ink sm:text-3xl">Component Library</h1>
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-muted">Kenali simbol, fungsi, spesifikasi, dan terminal setiap komponen sebelum merangkai di workspace.</p>
+        </div>
+        <span className="rounded-lg border border-line bg-raised px-3 py-2 text-xs font-medium text-muted tnum">{COMPONENTS.length} komponen tersedia</span>
+      </header>
+      <div className="flex min-h-0 flex-1 flex-col gap-4 lg:flex-row">
       <div className="flex min-h-0 min-w-0 flex-1 flex-col">
         <div className="flex flex-wrap items-center gap-3">
           <label className="relative block w-full max-w-sm">
@@ -35,7 +44,7 @@ export function LibraryPage() {
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Cari nama, fungsi, atau kata kunci…"
               data-testid="catalog-search"
-              className="h-9 w-full rounded-md border border-line bg-surface pl-8 pr-2 text-sm placeholder:text-muted focus:border-accent focus:outline-none"
+              className="h-10 w-full rounded-lg border border-line bg-surface pl-9 pr-3 text-sm placeholder:text-muted transition-colors focus:border-accent focus:outline-none"
             />
           </label>
           <span className="text-sm text-muted tnum" data-testid="catalog-count">{results.length} dari {COMPONENTS.length} komponen</span>
@@ -61,7 +70,7 @@ export function LibraryPage() {
                 data-testid="catalog-card"
                 aria-pressed={selected?.type === c.type}
                 onClick={() => setSelectedType(c.type)}
-                className={cn('flex h-full w-full flex-col rounded-lg border bg-surface p-3 text-left transition-colors hover:border-muted', selected?.type === c.type ? 'border-accent' : 'border-line')}
+                className={cn('flex h-full w-full flex-col rounded-xl border bg-surface p-3.5 text-left transition duration-200 hover:-translate-y-0.5 hover:border-accent/50 hover:shadow-md hover:shadow-black/10', selected?.type === c.type ? 'border-accent ring-1 ring-accent/20' : 'border-line')}
               >
                 <SymbolPreview def={c} className="mx-auto h-24 w-full text-ink" />
                 <span className="mt-2 text-[13px] font-medium leading-snug">{c.name}</span>
@@ -74,7 +83,7 @@ export function LibraryPage() {
       </div>
 
       {selected && (
-        <aside className="scroll-thin w-full shrink-0 overflow-y-auto rounded-lg border border-line bg-surface lg:w-[380px]" aria-label="Detail komponen" data-testid="catalog-detail">
+        <aside className="scroll-thin w-full shrink-0 overflow-y-auto rounded-xl border border-line bg-surface lg:w-[380px]" aria-label="Detail komponen" data-testid="catalog-detail">
           <div className="border-b border-line p-4">
             {selected.type === 'mcb-1p' && (
               <div className="mb-4">
@@ -149,6 +158,7 @@ export function LibraryPage() {
           </div>
         </aside>
       )}
+      </div>
     </div>
   );
 }
