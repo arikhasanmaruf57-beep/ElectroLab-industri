@@ -13,58 +13,74 @@ const areas = [
 export function HomeView() {
   return (
     <div className="min-h-screen w-full bg-bg">
-      <main className="w-full px-4 pb-16 pt-12 sm:px-7 sm:pt-16 lg:px-10 lg:pt-20 2xl:px-14">
-        <section className="grid w-full items-center gap-10 border-b border-line pb-14 lg:grid-cols-[minmax(0,1.15fr)_minmax(320px,0.85fr)] lg:gap-14 lg:pb-20">
-          <div className="max-w-4xl">
-            <p className="mb-5 flex items-center gap-2 text-xs font-medium uppercase tracking-[0.16em] text-accent"><span className="h-px w-6 bg-accent" /> Laboratorium kelistrikan digital</p>
-            <h1 className="max-w-4xl text-4xl font-semibold leading-[1.1] tracking-[-0.045em] text-ink sm:text-5xl lg:text-6xl 2xl:text-7xl">Dari memahami rangkaian, menjadi mampu merancangnya.</h1>
-            <p className="mt-6 max-w-2xl text-base leading-7 text-muted sm:text-lg sm:leading-8">ElectroLab adalah ruang belajar untuk mengeksplorasi instalasi listrik, kontrol motor, dan otomasi industri melalui workspace interaktif. Belajar konsepnya, susun rangkaiannya, lalu pahami bagaimana sistem bekerja.</p>
+      <main className="mx-auto w-full max-w-[1440px] px-4 pb-16 pt-8 sm:px-7 sm:pt-12 lg:px-10 lg:pt-16">
+        <section className="home-enter relative grid items-center gap-10 overflow-hidden rounded-2xl border border-line bg-surface px-6 py-9 sm:px-9 sm:py-12 lg:grid-cols-[1.08fr_0.92fr] lg:gap-12 lg:px-14 lg:py-16">
+          <div className="pointer-events-none absolute -right-24 -top-28 size-80 rounded-full bg-accent/10 blur-3xl" aria-hidden="true" />
+          <div className="relative z-10 max-w-3xl">
+            <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-accent/25 bg-accent/10 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-accent"><span className="size-1.5 rounded-full bg-ok" /> Laboratorium kelistrikan digital</p>
+            <h1 className="max-w-3xl text-4xl font-semibold leading-[1.08] tracking-[-0.05em] text-ink sm:text-5xl lg:text-6xl">Rancang. Simulasikan. <span className="text-accent">Pahami.</span></h1>
+            <p className="mt-6 max-w-2xl text-base leading-7 text-muted sm:text-lg sm:leading-8">Ruang belajar interaktif untuk mengeksplorasi instalasi listrik, kontrol motor, dan otomasi industri. Susun rangkaian, kenali fungsi setiap komponen, lalu pelajari bagaimana sistem bekerja.</p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              <Link href="/workspace" className="inline-flex h-11 items-center gap-2 rounded-md bg-accent px-5 text-sm font-medium text-accent-ink transition-colors hover:brightness-110">Buka workspace <Icon name="chevron" size={16} /></Link>
-              <Link href="/learning" className="inline-flex h-11 items-center rounded-md border border-line px-5 text-sm font-medium text-ink transition-colors hover:bg-raised">Lihat materi belajar</Link>
+              <Link href="/workspace" className="inline-flex h-11 items-center gap-2 rounded-lg bg-accent px-5 text-sm font-semibold text-accent-ink shadow-lg shadow-accent/15 transition duration-200 hover:-translate-y-0.5 hover:brightness-110">Mulai simulasi <Icon name="chevron" size={16} /></Link>
+              <Link href="/learning" className="inline-flex h-11 items-center gap-2 rounded-lg border border-line bg-bg/60 px-5 text-sm font-medium text-ink transition duration-200 hover:border-accent/50 hover:bg-raised">Jelajahi materi <Icon name="book" size={16} /></Link>
             </div>
+            <div className="mt-9 flex flex-wrap gap-x-7 gap-y-3 border-t border-line pt-5 text-xs text-muted"><span className="inline-flex items-center gap-2"><Icon name="check" size={14} className="text-ok" /> Belajar berbasis praktik</span><span className="inline-flex items-center gap-2"><Icon name="bolt" size={14} className="text-accent" /> Fokus kelistrikan industri</span><span className="inline-flex items-center gap-2"><Icon name="monitor" size={14} className="text-accent" /> Berjalan di browser</span></div>
           </div>
-          <div className="relative min-h-[260px] overflow-hidden rounded-lg border border-line bg-surface p-5 sm:min-h-[320px] sm:p-7">
-            <div className="absolute inset-0 opacity-40" aria-hidden="true" style={{ backgroundImage: 'radial-gradient(var(--grid-dot) 1px, transparent 1px)', backgroundSize: '22px 22px' }} />
-            <div className="relative flex h-full min-h-[220px] flex-col justify-between">
-              <div className="flex items-center justify-between"><span className="text-[11px] font-medium uppercase tracking-[0.14em] text-muted">Ruang eksperimen</span><span className="rounded border border-line px-2 py-1 font-mono text-[10px] text-muted">EL / 001</span></div>
-              <div className="flex items-center justify-center py-6">
-                <div className="flex w-full max-w-md items-center justify-center gap-3 sm:gap-5">
-                  <div className="flex size-16 shrink-0 items-center justify-center rounded-md border border-line bg-raised text-accent sm:size-20"><Icon name="bolt" size={30} /></div><div className="h-px flex-1 bg-accent/60" />
-                  <div className="flex size-16 shrink-0 items-center justify-center rounded-md border border-line bg-raised text-muted sm:size-20"><Icon name="workspace" size={27} /></div><div className="h-px flex-1 bg-accent/60" />
-                  <div className="flex size-16 shrink-0 items-center justify-center rounded-md border border-line bg-raised text-muted sm:size-20"><Icon name="motor" size={27} /></div>
-                </div>
+          <div className="relative mx-auto w-full max-w-xl">
+            <div className="absolute inset-8 rounded-full bg-accent/10 blur-3xl" aria-hidden="true" />
+            <div className="relative overflow-hidden rounded-xl border border-line bg-canvas p-5 shadow-2xl shadow-black/20 sm:p-7">
+              <div className="absolute inset-0 opacity-35" aria-hidden="true" style={{ backgroundImage: 'radial-gradient(var(--grid-dot) 1px, transparent 1px)', backgroundSize: '18px 18px' }} />
+              <div className="relative flex items-center justify-between border-b border-line pb-4"><div><p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-muted">Workspace preview</p><p className="mt-1 text-sm font-semibold text-ink">Motor control circuit</p></div><span className="rounded-md border border-ok/30 bg-ok/10 px-2 py-1 font-mono text-[10px] text-ok">READY</span></div>
+              <div className="relative flex min-h-[220px] items-center justify-center py-7">
+                <svg viewBox="0 0 440 220" role="img" aria-label="Ilustrasi rangkaian kontrol motor sederhana" className="w-full max-w-[440px] overflow-visible">
+                  <g fill="none" stroke="var(--symbol-dim)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M52 34V184H388V34" /><path d="M52 34H145M295 34H388" /><path d="M145 34V77M295 34V77" /><path d="M145 143V184M295 143V184" />
+                    <path d="M145 77H185L205 110L225 77H255L275 110L295 77" />
+                    <path d="M185 143H255" />
+                  </g>
+                  <g fill="var(--surface)" stroke="var(--accent)" strokeWidth="2">
+                    <rect x="28" y="19" width="48" height="30" rx="5" /><rect x="121" y="77" width="48" height="66" rx="6" /><rect x="271" y="77" width="48" height="66" rx="6" /><circle cx="388" cy="109" r="30" />
+                  </g>
+                  <g fill="var(--ink)" fontSize="10" fontFamily="ui-monospace, monospace" textAnchor="middle"><text x="52" y="38">L</text><text x="145" y="113">KM</text><text x="295" y="113">OL</text><text x="388" y="113">M</text><text x="220" y="18" fill="var(--muted)">CONTROL LINE</text></g>
+                  <g fill="none" stroke="#34c27a" strokeWidth="2.5" strokeLinecap="round"><path d="M52 34H145V77" strokeDasharray="5 5" className="circuit-flow" /><path d="M295 143V184H388V139" strokeDasharray="5 5" className="circuit-flow" /></g>
+                  <g fill="#34c27a"><circle cx="52" cy="34" r="4" /><circle cx="388" cy="184" r="4" /></g>
+                </svg>
               </div>
-              <div className="flex flex-wrap items-end justify-between gap-3 border-t border-line pt-4"><div><p className="text-sm font-medium text-ink">Belajar melalui praktik</p><p className="mt-1 text-xs text-muted">Konsep · Rangkaian · Pemahaman</p></div><span className="font-mono text-[10px] text-muted">ELECTRICAL / INDUSTRIAL</span></div>
+              <div className="relative grid grid-cols-3 gap-2 border-t border-line pt-4">
+                {[['01','Komponen'],['02','Koneksi'],['03','Simulasi']].map(([n,label]) => <div key={n}><p className="font-mono text-[10px] text-accent">{n}</p><p className="mt-1 text-xs font-medium text-ink">{label}</p></div>)}
+              </div>
             </div>
+            <div className="relative mt-3 flex items-center justify-between px-1 text-[10px] font-mono uppercase tracking-wider text-muted"><span>Electrical engineering tools</span><span>EL / 001</span></div>
           </div>
         </section>
 
-        <section className="w-full border-b border-line py-12 sm:py-16">
-          <div className="grid gap-5 lg:grid-cols-[minmax(220px,0.7fr)_minmax(0,1.3fr)] lg:gap-14">
-            <div><p className="text-xs font-medium uppercase tracking-[0.13em] text-accent">Mengapa ElectroLab dibuat?</p><h2 className="mt-3 max-w-sm text-2xl font-semibold leading-tight tracking-tight sm:text-3xl">Belajar teknik seharusnya tidak berhenti di atas kertas.</h2></div>
-            <div className="max-w-4xl space-y-4 text-sm leading-7 text-muted sm:text-base sm:leading-8">
-              <p>Ide ElectroLab berangkat dari pengalaman belajar di bidang Teknik Instalasi Tenaga Listrik. Saat mempelajari instalasi dan sistem kontrol, teori akan jauh lebih mudah dipahami ketika kita bisa melihat hubungan antar-komponen dan mencoba menyusun rangkaiannya sendiri.</p>
-              <p>Dari pengalaman itu, lalu berlanjut ke perjalanan belajar Teknik Elektro, muncul keinginan untuk membangun ruang praktik digital yang bisa dibuka siapa saja. Bukan sekadar kumpulan materi, tetapi tempat untuk bereksperimen, melakukan kesalahan, memperbaiki rangkaian, dan memahami alasan di balik setiap koneksi.</p>
-              <p className="border-l-2 border-accent/60 pl-4 text-ink">ElectroLab dibangun secara bertahap dari proses belajar nyata—dengan harapan bisa menjadi teman belajar bagi siapa pun yang ingin memahami dunia kelistrikan dan otomasi industri.</p>
-            </div>
+        <section id="about" className="home-enter mt-12 grid scroll-mt-8 gap-6 rounded-2xl border border-line bg-raised/45 p-6 sm:mt-16 sm:grid-cols-[0.72fr_1.28fr] sm:gap-10 sm:p-9" style={{ animationDelay: '80ms' }}>
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.15em] text-accent">Di balik ElectroLab</p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-[-0.04em] text-ink sm:text-4xl">Hai, saya <span className="text-accent">aerikhm.</span></h2>
+            <p className="mt-3 text-sm leading-6 text-muted">Senang belajar, bereksperimen, dan membangun sesuatu.</p>
+            <div className="mt-6 inline-flex items-center gap-2 rounded-lg border border-line bg-surface px-3 py-2 text-xs text-muted"><Icon name="user" size={15} className="text-accent" /> Creator & learner</div>
+          </div>
+          <div className="max-w-3xl space-y-4 text-sm leading-7 text-muted sm:text-base sm:leading-8">
+            <p>Saya memiliki latar belakang Teknik Instalasi Tenaga Listrik dan sedang melanjutkan perjalanan belajar di bidang Teknik Elektro. Ketertarikan saya ada pada dunia kelistrikan, sistem kontrol, dan teknologi yang bisa membantu proses belajar menjadi lebih mudah dipahami.</p>
+            <p>ElectroLab Industri saya kembangkan sebagai proyek belajar sekaligus ruang eksperimen. Saya ingin menggabungkan teori dengan praktik digital, supaya siapa pun bisa mencoba menyusun rangkaian, memahami fungsi komponen, dan belajar dari prosesnya.</p>
+            <p className="border-l-2 border-accent pl-4 text-ink">Proyek ini masih terus berkembang. Dibangun sedikit demi sedikit, sambil belajar dan memperbaiki hal-hal yang belum sempurna.</p>
           </div>
         </section>
 
-        <section className="w-full pt-12 sm:pt-16">
-          <div className="mb-6 flex flex-wrap items-end justify-between gap-3"><div><p className="text-xs font-medium uppercase tracking-[0.13em] text-muted">Jelajahi ElectroLab</p><h2 className="mt-2 text-xl font-semibold tracking-tight sm:text-2xl">Mulai dari bidang yang ingin kamu pelajari</h2></div><span className="text-xs text-muted">Ruang belajar dan simulasi</span></div>
-          <div className="grid w-full gap-x-8 sm:grid-cols-2 xl:grid-cols-3 2xl:gap-x-12">
-            {areas.map((area) => (
-              <Link key={area.href} href={area.href} className="group flex gap-4 border-t border-line py-5 transition-colors hover:border-accent/60">
-                <span className="mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-md border border-line text-muted transition-colors group-hover:border-accent/50 group-hover:text-accent"><Icon name={area.icon} size={18} /></span>
-                <span className="min-w-0 flex-1"><span className="flex flex-wrap items-center gap-2 text-sm font-semibold text-ink">{area.title}{area.tag && <span className="rounded border border-accent/30 px-1.5 py-0.5 text-[10px] font-medium text-accent">{area.tag}</span>}</span><span className="mt-1 block text-sm leading-6 text-muted">{area.description}</span></span>
-                <Icon name="chevron" size={16} className="mt-2 shrink-0 text-muted transition-transform group-hover:translate-x-0.5 group-hover:text-ink" />
+        <section className="mt-14 sm:mt-20">
+          <div className="mb-7 flex flex-wrap items-end justify-between gap-3"><div><p className="text-xs font-semibold uppercase tracking-[0.15em] text-accent">Jelajahi platform</p><h2 className="mt-2 text-2xl font-semibold tracking-tight text-ink sm:text-3xl">Pilih area untuk mulai belajar</h2></div><span className="text-xs text-muted">Ruang belajar dan simulasi</span></div>
+          <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+            {areas.map((area, index) => (
+              <Link key={area.href} href={area.href} className="group home-card flex min-h-[142px] gap-4 rounded-xl border border-line bg-surface p-5 transition duration-200 hover:-translate-y-1 hover:border-accent/50 hover:shadow-lg hover:shadow-black/10" style={{ animationDelay: `${index * 45}ms` }}>
+                <span className="flex size-10 shrink-0 items-center justify-center rounded-lg border border-line bg-raised text-muted transition-colors group-hover:border-accent/40 group-hover:text-accent"><Icon name={area.icon} size={19} /></span>
+                <span className="min-w-0 flex-1"><span className="flex flex-wrap items-center gap-2 text-sm font-semibold text-ink">{area.title}{area.tag && <span className="rounded border border-accent/30 bg-accent/10 px-1.5 py-0.5 text-[10px] font-medium text-accent">{area.tag}</span>}</span><span className="mt-2 block text-sm leading-6 text-muted">{area.description}</span><span className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-accent opacity-0 transition-opacity group-hover:opacity-100">Buka area <Icon name="chevron" size={13} /></span></span>
               </Link>
             ))}
           </div>
         </section>
 
-        <footer className="mt-14 flex w-full flex-wrap items-center justify-between gap-3 border-t border-line pt-5 text-xs text-muted"><span>ElectroLab Industri</span><span>Dibangun dari rasa ingin tahu dan proses belajar.</span></footer>
+        <footer className="mt-16 flex flex-wrap items-center justify-between gap-3 border-t border-line pt-6 text-xs text-muted"><span className="font-semibold text-ink">ElectroLab <span className="font-normal text-muted">Industri</span></span><span>Dibangun dari rasa ingin tahu dan proses belajar.</span></footer>
       </main>
     </div>
   );
