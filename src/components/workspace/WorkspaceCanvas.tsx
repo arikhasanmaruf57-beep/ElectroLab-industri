@@ -308,7 +308,7 @@ export function WorkspaceCanvas() {
             const d = pointsToPath(routeWire(a, b));
             const sel = selectedWires.has(w.id);
             return (
-              <g key={w.id} data-testid="wire" data-wire-id={w.id} data-conductor={w.conductor} data-selected={sel}>
+              <g key={w.id} className="workspace-wire" data-testid="wire" data-wire-id={w.id} data-conductor={w.conductor} data-selected={sel}>
                 {sel && <path d={d} fill="none" stroke="var(--accent)" strokeWidth={9} strokeOpacity={0.35} strokeLinejoin="round" />}
                 <path d={d} fill="none" stroke="var(--wire-casing)" strokeWidth={5} strokeLinejoin="round" strokeLinecap="round" />
                 <path d={d} fill="none" stroke={colors[w.conductor]} strokeWidth={3} strokeLinejoin="round" strokeLinecap="round" />

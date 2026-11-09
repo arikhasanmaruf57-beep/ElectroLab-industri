@@ -1,3 +1,6 @@
+'use client';
+
+import { useEffect } from 'react';
 import Link from 'next/link';
 import { Icon } from '@/components/ui/Icon';
 
@@ -11,10 +14,28 @@ const areas = [
 ];
 
 export function HomeView() {
+  useEffect(() => {
+    const elements = document.querySelectorAll<HTMLElement>('[data-reveal]');
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+      elements.forEach((element) => element.classList.add('is-visible'));
+      return;
+    }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -36px 0px' });
+    elements.forEach((element) => observer.observe(element));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="min-h-screen w-full bg-bg">
       <main className="mx-auto w-full max-w-[1440px] px-4 pb-16 pt-8 sm:px-7 sm:pt-12 lg:px-10 lg:pt-16">
-        <section className="home-enter relative grid items-center gap-10 overflow-hidden rounded-2xl border border-line bg-surface px-6 py-9 sm:px-9 sm:py-12 lg:grid-cols-[1.08fr_0.92fr] lg:gap-12 lg:px-14 lg:py-16">
+        <section className="home-enter circuit-hero relative grid items-center gap-10 overflow-hidden rounded-2xl border border-line bg-surface px-6 py-9 sm:px-9 sm:py-12 lg:grid-cols-[1.08fr_0.92fr] lg:gap-12 lg:px-14 lg:py-16">
           <div className="pointer-events-none absolute -right-24 -top-28 size-80 rounded-full bg-accent/10 blur-3xl" aria-hidden="true" />
           <div className="relative z-10 max-w-3xl">
             <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-accent/25 bg-accent/10 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-accent"><span className="size-1.5 rounded-full bg-ok" /> Laboratorium kelistrikan digital</p>
@@ -54,7 +75,7 @@ export function HomeView() {
           </div>
         </section>
 
-        <section id="about" className="home-enter mt-12 grid scroll-mt-8 gap-6 rounded-2xl border border-line bg-raised/45 p-6 sm:mt-16 sm:grid-cols-[0.72fr_1.28fr] sm:gap-10 sm:p-9" style={{ animationDelay: '80ms' }}>
+        <section id="about" data-reveal className="reveal-on-scroll mt-12 grid scroll-mt-8 gap-6 rounded-2xl border border-line bg-raised/45 p-6 sm:mt-16 sm:grid-cols-[0.72fr_1.28fr] sm:gap-10 sm:p-9" style={{ animationDelay: '80ms' }}>
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.15em] text-accent">Di balik ElectroLab</p>
             <h2 className="mt-3 text-3xl font-semibold tracking-[-0.04em] text-ink sm:text-4xl">Hai, saya <span className="text-accent">aerikhm.</span></h2>
@@ -68,11 +89,11 @@ export function HomeView() {
           </div>
         </section>
 
-        <section className="mt-14 sm:mt-20">
+        <section data-reveal className="reveal-on-scroll mt-14 sm:mt-20">
           <div className="mb-7 flex flex-wrap items-end justify-between gap-3"><div><p className="text-xs font-semibold uppercase tracking-[0.15em] text-accent">Jelajahi platform</p><h2 className="mt-2 text-2xl font-semibold tracking-tight text-ink sm:text-3xl">Pilih area untuk mulai belajar</h2></div><span className="text-xs text-muted">Ruang belajar dan simulasi</span></div>
           <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
             {areas.map((area, index) => (
-              <Link key={area.href} href={area.href} className="group home-card flex min-h-[142px] gap-4 rounded-xl border border-line bg-surface p-5 transition duration-200 hover:-translate-y-1 hover:border-accent/50 hover:shadow-lg hover:shadow-black/10" style={{ animationDelay: `${index * 45}ms` }}>
+              <Link key={area.href} href={area.href} data-reveal className="group reveal-on-scroll flex min-h-[142px] gap-4 rounded-xl border border-line bg-surface p-5 transition duration-200 hover:-translate-y-1 hover:border-accent/50 hover:shadow-lg hover:shadow-black/10" style={{ transitionDelay: `${index * 55}ms` }}>
                 <span className="flex size-10 shrink-0 items-center justify-center rounded-lg border border-line bg-raised text-muted transition-colors group-hover:border-accent/40 group-hover:text-accent"><Icon name={area.icon} size={19} /></span>
                 <span className="min-w-0 flex-1"><span className="flex flex-wrap items-center gap-2 text-sm font-semibold text-ink">{area.title}{area.tag && <span className="rounded border border-accent/30 bg-accent/10 px-1.5 py-0.5 text-[10px] font-medium text-accent">{area.tag}</span>}</span><span className="mt-2 block text-sm leading-6 text-muted">{area.description}</span><span className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-accent opacity-0 transition-opacity group-hover:opacity-100">Buka area <Icon name="chevron" size={13} /></span></span>
               </Link>

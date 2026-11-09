@@ -43,7 +43,7 @@ export function ComponentNode({ placed, def, selected, viewMode, connected, pend
   const terminalLayout = viewMode === 'physical' ? getPhysicalLayout(def) : def.layout;
 
   return (
-    <g data-testid="component" data-component-id={placed.id} data-type={def.type} data-label={placed.label} data-display-mode={viewMode}>
+    <g className={selected ? 'workspace-component workspace-component-selected' : 'workspace-component'} data-testid="component" data-component-id={placed.id} data-type={def.type} data-label={placed.label} data-display-mode={viewMode}>
       <g transform={`translate(${placed.x} ${placed.y}) rotate(${placed.rotation} ${w / 2} ${h / 2})`}>
         <g onPointerDown={(e) => onBodyDown(e, placed.id)} style={{ cursor: 'move' }}>
           <rect x={-4} y={-4} width={w + 8} height={h + 8} fill="transparent" />
@@ -60,7 +60,7 @@ export function ComponentNode({ placed, def, selected, viewMode, connected, pend
           )}
         </g>
         {selected && (
-          <rect x={-6} y={-6} width={w + 12} height={h + 12} rx={5} fill="none" stroke="var(--accent)" strokeWidth={1.4} strokeDasharray="5 3" pointerEvents="none" />
+          <rect className="workspace-selection-outline" x={-6} y={-6} width={w + 12} height={h + 12} rx={5} fill="none" stroke="var(--accent)" strokeWidth={1.4} strokeDasharray="5 3" pointerEvents="none" />
         )}
         {def.terminals.map((t) => {
           const p = terminalLayout.terminals[t.id];
@@ -73,6 +73,7 @@ export function ComponentNode({ placed, def, selected, viewMode, connected, pend
           return (
             <g
               key={t.id}
+              className="workspace-terminal"
               transform={`translate(${p.x} ${p.y})`}
               data-terminal=""
               data-testid="terminal"

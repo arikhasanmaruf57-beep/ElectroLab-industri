@@ -11,7 +11,7 @@ import { formatTime } from '@/utils/cn';
 import { useMounted } from '@/hooks/useHydrated';
 import { Icon } from '../ui/Icon';
 
-export function Topbar() {
+export function Topbar({ compact = false }: { compact?: boolean }) {
   const pathname = usePathname();
   const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -34,13 +34,13 @@ export function Topbar() {
 
   return (
     <>
-      <header className="relative z-40 flex h-16 shrink-0 items-center gap-3 border-b border-line bg-bg/95 px-4 backdrop-blur sm:px-7 lg:px-10">
+      <header className={`relative z-40 mx-3 mt-3 flex shrink-0 items-center gap-2 rounded-2xl border border-line/80 bg-surface/85 px-3 shadow-lg shadow-black/10 backdrop-blur-xl transition-all duration-200 sm:mx-6 sm:gap-3 sm:px-4 ${compact ? 'h-12' : 'h-14'}`}>
         <button
           type="button"
           onClick={() => setMenuOpen((open) => !open)}
           aria-label={menuOpen ? 'Tutup menu navigasi' : 'Buka menu navigasi'}
           aria-expanded={menuOpen}
-          className="flex size-9 shrink-0 items-center justify-center rounded-md border border-line text-muted transition-colors hover:bg-raised hover:text-ink"
+          className="flex size-9 shrink-0 items-center justify-center rounded-xl border border-line/80 text-muted transition-all duration-200 hover:border-accent/40 hover:bg-raised hover:text-ink active:scale-95"
         >
           {menuOpen ? <Icon name="x" size={18} /> : (
             <span className="flex flex-col gap-1">
@@ -56,9 +56,30 @@ export function Topbar() {
           <span className="truncate text-sm font-semibold tracking-tight">ElectroLab <span className="font-normal text-muted">/ Industri</span></span>
         </Link>
 
-        <div className="mx-2 hidden h-6 w-px bg-line sm:block" />
-        <h1 className="hidden min-w-0 flex-1 truncate text-sm font-medium text-muted sm:block">{title}</h1>
-        <div className="flex-1 sm:hidden" />
+        <nav aria-label="Navigasi cepat" className="hidden min-w-0 flex-1 items-center justify-center gap-1 lg:flex">
+          {[
+            { href: '/', label: 'Beranda' },
+            { href: '/component-library', label: 'Komponen' },
+            { href: '/learning', label: 'Belajar' },
+            { href: '/workspace', label: 'Workspace' },
+          ].map((item) => {
+            const active = item.href === '/' ? isHome : pathname === item.href || pathname.startsWith(item.href + '/');
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={closeMenu}
+                aria-current={active ? 'page' : undefined}
+                className={`rounded-xl px-3 py-2 text-xs font-medium transition-all duration-200 ${active ? 'bg-accent/12 text-accent' : 'text-muted hover:bg-raised hover:text-ink'}`}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
+          {isHome && <Link href="/#about" className="rounded-xl px-3 py-2 text-xs font-medium text-muted transition-colors hover:bg-raised hover:text-ink">Tentang</Link>}
+        </nav>
+        <h1 className="hidden min-w-0 flex-1 truncate text-sm font-medium text-muted xl:block lg:hidden">{title}</h1>
+        <div className="flex-1 lg:hidden" />
 
         {!isHome && (
           <span className="hidden text-xs text-muted xl:inline" data-testid="save-indicator">
@@ -70,7 +91,7 @@ export function Topbar() {
           onClick={toggleTheme}
           aria-label={theme === 'dark' ? 'Beralih ke mode terang' : 'Beralih ke mode gelap'}
           title={theme === 'dark' ? 'Mode terang' : 'Mode gelap'}
-          className="flex size-9 shrink-0 items-center justify-center rounded-md border border-line text-muted hover:bg-raised hover:text-ink"
+          className="flex size-9 shrink-0 items-center justify-center rounded-xl border border-line/80 text-muted transition-all duration-200 hover:border-accent/40 hover:bg-raised hover:text-ink active:scale-95"
         >
           <Icon name={theme === 'dark' ? 'sun' : 'moon'} />
         </button>
@@ -78,7 +99,7 @@ export function Topbar() {
           <button
             type="button"
             onClick={onNew}
-            className="flex h-9 shrink-0 items-center gap-2 rounded-md bg-accent px-3.5 text-sm font-medium text-accent-ink hover:brightness-110"
+            className="flex h-9 shrink-0 items-center gap-2 rounded-xl bg-accent px-3.5 text-sm font-medium text-accent-ink transition-all duration-200 hover:-translate-y-0.5 hover:brightness-110 active:scale-95"
           >
             <Icon name="plus" size={16} />
             <span className="hidden sm:inline">Rangkaian baru</span>

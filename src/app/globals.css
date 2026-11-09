@@ -116,11 +116,69 @@ button:not(:disabled),
 }
 .circuit-flow { animation: circuit-dash 2.4s linear infinite; }
 
+/* Hybrid industrial UI: restrained motion and low-cost visual feedback. */
+.circuit-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .22;
+  background-image:
+    linear-gradient(90deg, transparent 49.8%, var(--grid-dot) 50%, transparent 50.2%),
+    linear-gradient(0deg, transparent 49.8%, var(--grid-dot) 50%, transparent 50.2%),
+    radial-gradient(circle at 50% 50%, transparent 0 2px, var(--accent) 2.5px 3px, transparent 3.5px);
+  background-size: 48px 48px, 48px 48px, 96px 96px;
+  mask-image: radial-gradient(ellipse at 70% 45%, #000 0%, transparent 72%);
+}
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+  transition: opacity 480ms cubic-bezier(.2,.7,.2,1), transform 480ms cubic-bezier(.2,.7,.2,1);
+}
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+button:not(:disabled):active,
+a:active {
+  transform: scale(.985);
+}
+
+.workspace-component {
+  transition: opacity 140ms ease, filter 160ms ease;
+}
+.workspace-component-selected {
+  filter: drop-shadow(0 0 5px color-mix(in srgb, var(--accent) 35%, transparent));
+}
+.workspace-selection-outline {
+  animation: selection-dash 5s linear infinite;
+}
+.workspace-terminal > circle:nth-of-type(2) {
+  transition: r 140ms ease, stroke-width 140ms ease;
+}
+.workspace-terminal:hover > circle:nth-of-type(2) {
+  r: 5.5;
+  stroke-width: 2;
+}
+.workspace-wire {
+  transition: opacity 140ms ease;
+}
+.workspace-wire[data-selected="true"] {
+  opacity: 1;
+}
+@keyframes selection-dash {
+  to { stroke-dashoffset: -32; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .toast-in,
   .home-enter,
   .home-card,
-  .circuit-flow { animation: none !important; }
+  .circuit-flow,
+  .workspace-selection-outline { animation: none !important; }
+  .reveal-on-scroll { opacity: 1; transform: none; transition: none; }
   *, *::before, *::after { transition-duration: 0.01ms !important; }
 }
