@@ -100,6 +100,17 @@ export function Topbar() {
             </div>
             <nav className="scroll-thin flex-1 overflow-y-auto p-3">
               <p className="px-3 pb-2 pt-1 text-[11px] font-medium uppercase tracking-wider text-muted">Navigasi utama</p>
+              {isHome && (
+                <Link
+                  href="/#about"
+                  onClick={closeMenu}
+                  className="mb-2 flex h-10 items-center gap-3 rounded-md border border-accent/25 bg-accent/10 px-3 text-sm font-medium text-accent transition-colors hover:bg-accent/15"
+                >
+                  <Icon name="bolt" size={17} />
+                  <span className="flex-1">Tentang saya</span>
+                  <Icon name="chevron" size={14} />
+                </Link>
+              )}
               {NAV_ITEMS.map((item) => {
                 const active = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href + '/'));
                 return (
