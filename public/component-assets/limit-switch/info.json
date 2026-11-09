@@ -1,0 +1,60 @@
+{
+  "id": "limit-switch",
+  "name": "Limit Switch",
+  "category": "control",
+  "image": "physical.svg",
+  "imageSize": {
+    "width": 92,
+    "height": 112
+  },
+  "imageType": "ai-generated-illustration",
+  "imageSource": "Ilustrasi vektor generik ElectroLab dari SVG; bukan foto produk pabrikan dan tidak mewakili merek/model tertentu.",
+  "imageLicense": null,
+  "terminalCount": 4,
+  "terminals": [
+    {
+      "id": "13",
+      "label": "13",
+      "kind": "contact",
+      "side": "top",
+      "position": {
+        "x": 0.3913,
+        "y": 0.0536
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "21",
+      "label": "21",
+      "kind": "contact",
+      "side": "top",
+      "position": {
+        "x": 0.6087,
+        "y": 0.0536
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "14",
+      "label": "14",
+      "kind": "contact",
+      "side": "bottom",
+      "position": {
+        "x": 0.3913,
+        "y": 0.9464
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "22",
+      "label": "22",
+      "kind": "contact",
+      "side": "bottom",
+      "position": {
+        "x": 0.6087,
+        "y": 0.9464
+      },
+      "connectionType": "screw"
+    }
+  ]
+}

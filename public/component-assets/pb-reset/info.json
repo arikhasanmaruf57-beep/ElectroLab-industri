@@ -1,0 +1,38 @@
+{
+  "id": "pb-reset",
+  "name": "Push Button RESET (NO)",
+  "category": "control",
+  "image": "physical.svg",
+  "imageSize": {
+    "width": 92,
+    "height": 112
+  },
+  "imageType": "ai-generated-illustration",
+  "imageSource": "Ilustrasi vektor generik ElectroLab dari SVG; bukan foto produk pabrikan dan tidak mewakili merek/model tertentu.",
+  "imageLicense": null,
+  "terminalCount": 2,
+  "terminals": [
+    {
+      "id": "3",
+      "label": "3",
+      "kind": "contact",
+      "side": "top",
+      "position": {
+        "x": 0.5,
+        "y": 0.0536
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "4",
+      "label": "4",
+      "kind": "contact",
+      "side": "bottom",
+      "position": {
+        "x": 0.5,
+        "y": 0.9464
+      },
+      "connectionType": "screw"
+    }
+  ]
+}

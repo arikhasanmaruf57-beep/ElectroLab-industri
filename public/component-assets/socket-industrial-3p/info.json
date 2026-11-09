@@ -1,0 +1,71 @@
+{
+  "id": "socket-industrial-3p",
+  "name": "Industrial Socket 3P+N+PE",
+  "category": "accessories",
+  "image": "physical.svg",
+  "imageSize": {
+    "width": 132,
+    "height": 112
+  },
+  "imageType": "ai-generated-illustration",
+  "imageSource": "Ilustrasi vektor generik ElectroLab dari SVG. Bukan foto produk pabrikan atau representasi merek/model tertentu.",
+  "imageLicense": null,
+  "terminalCount": 5,
+  "terminals": [
+    {
+      "id": "L1",
+      "label": "L1",
+      "kind": "power",
+      "side": "top",
+      "position": {
+        "x": 0.197,
+        "y": 0.0536
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "L2",
+      "label": "L2",
+      "kind": "power",
+      "side": "top",
+      "position": {
+        "x": 0.3485,
+        "y": 0.0536
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "L3",
+      "label": "L3",
+      "kind": "power",
+      "side": "top",
+      "position": {
+        "x": 0.5,
+        "y": 0.0536
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "N",
+      "label": "N",
+      "kind": "neutral",
+      "side": "top",
+      "position": {
+        "x": 0.6515,
+        "y": 0.0536
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "PE",
+      "label": "PE",
+      "kind": "earth",
+      "side": "top",
+      "position": {
+        "x": 0.803,
+        "y": 0.0536
+      },
+      "connectionType": "screw"
+    }
+  ]
+}

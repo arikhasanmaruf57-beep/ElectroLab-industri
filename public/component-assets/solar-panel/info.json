@@ -1,0 +1,38 @@
+{
+  "id": "solar-panel",
+  "name": "Panel Surya",
+  "category": "power-source",
+  "image": "physical.svg",
+  "imageSize": {
+    "width": 92,
+    "height": 112
+  },
+  "imageType": "ai-generated-illustration",
+  "imageSource": "Ilustrasi vektor generik ElectroLab dari SVG. Bukan foto produk pabrikan atau representasi merek/model tertentu.",
+  "imageLicense": null,
+  "terminalCount": 2,
+  "terminals": [
+    {
+      "id": "+",
+      "label": "+",
+      "kind": "dc-positive",
+      "side": "bottom",
+      "position": {
+        "x": 0.3913,
+        "y": 0.9464
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "-",
+      "label": "−",
+      "kind": "dc-negative",
+      "side": "bottom",
+      "position": {
+        "x": 0.6087,
+        "y": 0.9464
+      },
+      "connectionType": "screw"
+    }
+  ]
+}

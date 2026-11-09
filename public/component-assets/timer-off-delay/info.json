@@ -1,0 +1,82 @@
+{
+  "id": "timer-off-delay",
+  "name": "Timer OFF Delay",
+  "category": "control",
+  "image": "physical.svg",
+  "imageSize": {
+    "width": 92,
+    "height": 112
+  },
+  "imageType": "ai-generated-illustration",
+  "imageSource": "Ilustrasi vektor generik ElectroLab dari SVG; bukan foto produk pabrikan dan tidak mewakili merek/model tertentu.",
+  "imageLicense": null,
+  "terminalCount": 6,
+  "terminals": [
+    {
+      "id": "A1",
+      "label": "A1",
+      "kind": "coil",
+      "side": "top",
+      "position": {
+        "x": 0.2826,
+        "y": 0.0536
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "15",
+      "label": "15",
+      "kind": "contact",
+      "side": "top",
+      "position": {
+        "x": 0.5,
+        "y": 0.0536
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "17",
+      "label": "17",
+      "kind": "contact",
+      "side": "top",
+      "position": {
+        "x": 0.7174,
+        "y": 0.0536
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "A2",
+      "label": "A2",
+      "kind": "coil",
+      "side": "bottom",
+      "position": {
+        "x": 0.2826,
+        "y": 0.9464
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "16",
+      "label": "16",
+      "kind": "contact",
+      "side": "bottom",
+      "position": {
+        "x": 0.5,
+        "y": 0.9464
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "18",
+      "label": "18",
+      "kind": "contact",
+      "side": "bottom",
+      "position": {
+        "x": 0.7174,
+        "y": 0.9464
+      },
+      "connectionType": "screw"
+    }
+  ]
+}

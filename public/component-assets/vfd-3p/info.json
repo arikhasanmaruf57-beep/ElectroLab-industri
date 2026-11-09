@@ -1,0 +1,137 @@
+{
+  "id": "vfd-3p",
+  "name": "VFD (Inverter) 3 Phase",
+  "category": "motor",
+  "image": "physical.svg",
+  "imageSize": {
+    "width": 92,
+    "height": 112
+  },
+  "imageType": "ai-generated-illustration",
+  "imageSource": "Ilustrasi vektor generik ElectroLab dari SVG. Bukan foto produk pabrikan atau representasi merek/model tertentu.",
+  "imageLicense": null,
+  "terminalCount": 11,
+  "terminals": [
+    {
+      "id": "L1",
+      "label": "R/L1",
+      "kind": "power",
+      "side": "top",
+      "position": {
+        "x": 0.2826,
+        "y": 0.0536
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "L2",
+      "label": "S/L2",
+      "kind": "power",
+      "side": "top",
+      "position": {
+        "x": 0.5,
+        "y": 0.0536
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "L3",
+      "label": "T/L3",
+      "kind": "power",
+      "side": "top",
+      "position": {
+        "x": 0.7174,
+        "y": 0.0536
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "U",
+      "label": "U",
+      "kind": "power",
+      "side": "bottom",
+      "position": {
+        "x": 0.2826,
+        "y": 0.9464
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "V",
+      "label": "V",
+      "kind": "power",
+      "side": "bottom",
+      "position": {
+        "x": 0.5,
+        "y": 0.9464
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "W",
+      "label": "W",
+      "kind": "power",
+      "side": "bottom",
+      "position": {
+        "x": 0.7174,
+        "y": 0.9464
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "PE",
+      "label": "PE",
+      "kind": "earth",
+      "side": "right",
+      "position": {
+        "x": 0.9348,
+        "y": 0.5
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "DI1",
+      "label": "FWD",
+      "kind": "signal",
+      "side": "left",
+      "position": {
+        "x": 0.0652,
+        "y": 0.2321
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "DI2",
+      "label": "REV",
+      "kind": "signal",
+      "side": "left",
+      "position": {
+        "x": 0.0652,
+        "y": 0.4107
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "24V",
+      "label": "+24V",
+      "kind": "dc-positive",
+      "side": "left",
+      "position": {
+        "x": 0.0652,
+        "y": 0.5893
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "COM",
+      "label": "COM",
+      "kind": "dc-negative",
+      "side": "left",
+      "position": {
+        "x": 0.0652,
+        "y": 0.7679
+      },
+      "connectionType": "screw"
+    }
+  ]
+}

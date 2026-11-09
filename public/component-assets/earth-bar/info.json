@@ -1,0 +1,104 @@
+{
+  "id": "earth-bar",
+  "name": "Earth Bar (PE)",
+  "category": "wiring",
+  "image": "physical.svg",
+  "imageSize": {
+    "width": 112,
+    "height": 112
+  },
+  "imageType": "ai-generated-illustration",
+  "imageSource": "Ilustrasi vektor generik ElectroLab dari SVG. Bukan foto produk pabrikan atau representasi merek/model tertentu.",
+  "imageLicense": null,
+  "terminalCount": 8,
+  "terminals": [
+    {
+      "id": "T-PE1",
+      "label": "T-PE1",
+      "kind": "earth",
+      "side": "top",
+      "position": {
+        "x": 0.2321,
+        "y": 0.0536
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "T-PE2",
+      "label": "T-PE2",
+      "kind": "earth",
+      "side": "top",
+      "position": {
+        "x": 0.4107,
+        "y": 0.0536
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "T-PE3",
+      "label": "T-PE3",
+      "kind": "earth",
+      "side": "top",
+      "position": {
+        "x": 0.5893,
+        "y": 0.0536
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "T-PE4",
+      "label": "T-PE4",
+      "kind": "earth",
+      "side": "top",
+      "position": {
+        "x": 0.7679,
+        "y": 0.0536
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "B-PE1",
+      "label": "B-PE1",
+      "kind": "earth",
+      "side": "bottom",
+      "position": {
+        "x": 0.2321,
+        "y": 0.9464
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "B-PE2",
+      "label": "B-PE2",
+      "kind": "earth",
+      "side": "bottom",
+      "position": {
+        "x": 0.4107,
+        "y": 0.9464
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "B-PE3",
+      "label": "B-PE3",
+      "kind": "earth",
+      "side": "bottom",
+      "position": {
+        "x": 0.5893,
+        "y": 0.9464
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "B-PE4",
+      "label": "B-PE4",
+      "kind": "earth",
+      "side": "bottom",
+      "position": {
+        "x": 0.7679,
+        "y": 0.9464
+      },
+      "connectionType": "screw"
+    }
+  ]
+}

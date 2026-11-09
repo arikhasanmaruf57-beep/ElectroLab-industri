@@ -1,0 +1,126 @@
+{
+  "id": "relay-aux",
+  "name": "Relay Bantu",
+  "category": "control",
+  "image": "physical.svg",
+  "imageSize": {
+    "width": 132,
+    "height": 112
+  },
+  "imageType": "ai-generated-illustration",
+  "imageSource": "Ilustrasi vektor generik ElectroLab dari SVG; bukan foto produk pabrikan dan tidak mewakili merek/model tertentu.",
+  "imageLicense": null,
+  "terminalCount": 10,
+  "terminals": [
+    {
+      "id": "A1",
+      "label": "A1",
+      "kind": "coil",
+      "side": "top",
+      "position": {
+        "x": 0.197,
+        "y": 0.0536
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "13",
+      "label": "13",
+      "kind": "contact",
+      "side": "top",
+      "position": {
+        "x": 0.3485,
+        "y": 0.0536
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "23",
+      "label": "23",
+      "kind": "contact",
+      "side": "top",
+      "position": {
+        "x": 0.5,
+        "y": 0.0536
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "31",
+      "label": "31",
+      "kind": "contact",
+      "side": "top",
+      "position": {
+        "x": 0.6515,
+        "y": 0.0536
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "41",
+      "label": "41",
+      "kind": "contact",
+      "side": "top",
+      "position": {
+        "x": 0.803,
+        "y": 0.0536
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "A2",
+      "label": "A2",
+      "kind": "coil",
+      "side": "bottom",
+      "position": {
+        "x": 0.197,
+        "y": 0.9464
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "14",
+      "label": "14",
+      "kind": "contact",
+      "side": "bottom",
+      "position": {
+        "x": 0.3485,
+        "y": 0.9464
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "24",
+      "label": "24",
+      "kind": "contact",
+      "side": "bottom",
+      "position": {
+        "x": 0.5,
+        "y": 0.9464
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "32",
+      "label": "32",
+      "kind": "contact",
+      "side": "bottom",
+      "position": {
+        "x": 0.6515,
+        "y": 0.9464
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "42",
+      "label": "42",
+      "kind": "contact",
+      "side": "bottom",
+      "position": {
+        "x": 0.803,
+        "y": 0.9464
+      },
+      "connectionType": "screw"
+    }
+  ]
+}

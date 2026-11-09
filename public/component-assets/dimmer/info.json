@@ -1,0 +1,38 @@
+{
+  "id": "dimmer",
+  "name": "Dimmer Switch",
+  "category": "switching",
+  "image": "physical.svg",
+  "imageSize": {
+    "width": 92,
+    "height": 112
+  },
+  "imageType": "ai-generated-illustration",
+  "imageSource": "Ilustrasi vektor generik ElectroLab dari SVG. Bukan foto produk pabrikan atau representasi merek/model tertentu.",
+  "imageLicense": null,
+  "terminalCount": 2,
+  "terminals": [
+    {
+      "id": "1",
+      "label": "IN",
+      "kind": "power",
+      "side": "top",
+      "position": {
+        "x": 0.5,
+        "y": 0.0536
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "2",
+      "label": "OUT",
+      "kind": "power",
+      "side": "bottom",
+      "position": {
+        "x": 0.5,
+        "y": 0.9464
+      },
+      "connectionType": "screw"
+    }
+  ]
+}

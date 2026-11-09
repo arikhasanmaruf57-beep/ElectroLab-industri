@@ -1,0 +1,90 @@
+{
+  "id": "mccb-3p",
+  "name": "MCCB 3P",
+  "category": "protection",
+  "designator": "Q",
+  "description": "Molded Case Circuit Breaker tiga kutub dengan pengaturan arus.",
+  "image": "physical.png",
+  "imageSize": {
+    "width": 1280,
+    "height": 1280
+  },
+  "imageType": "ai-generated-illustration",
+  "imageSource": "Ilustrasi vektor hasil karya AI: kode SVG (gradien, bayangan) ditulis oleh Claude (Anthropic) lalu dirender ke PNG. Bentuk generik tanpa merek, logo, atau rating; bukan foto produk dan bukan keluaran model pembuat gambar. Gaya mengikuti aset mcb-1p.",
+  "imageLicense": null,
+  "terminalCount": 6,
+  "terminals": [
+    {
+      "id": "1",
+      "label": "L1 LINE",
+      "kind": "power",
+      "side": "top",
+      "phase": "L1",
+      "position": {
+        "x": 0.3047,
+        "y": 0.181
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "3",
+      "label": "L2 LINE",
+      "kind": "power",
+      "side": "top",
+      "phase": "L2",
+      "position": {
+        "x": 0.5,
+        "y": 0.181
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "5",
+      "label": "L3 LINE",
+      "kind": "power",
+      "side": "top",
+      "phase": "L3",
+      "position": {
+        "x": 0.6953,
+        "y": 0.181
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "2",
+      "label": "L1 LOAD",
+      "kind": "power",
+      "side": "bottom",
+      "phase": "L1",
+      "position": {
+        "x": 0.3047,
+        "y": 0.819
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "4",
+      "label": "L2 LOAD",
+      "kind": "power",
+      "side": "bottom",
+      "phase": "L2",
+      "position": {
+        "x": 0.5,
+        "y": 0.819
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "6",
+      "label": "L3 LOAD",
+      "kind": "power",
+      "side": "bottom",
+      "phase": "L3",
+      "position": {
+        "x": 0.6953,
+        "y": 0.819
+      },
+      "connectionType": "screw"
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "id": "power-supply-24v",
+  "name": "Power Supply AC/DC 24 V",
+  "category": "power-source",
+  "image": "physical.svg",
+  "imageSize": {
+    "width": 92,
+    "height": 112
+  },
+  "imageType": "ai-generated-illustration",
+  "imageSource": "Ilustrasi vektor generik ElectroLab dari SVG. Bukan foto produk pabrikan atau representasi merek/model tertentu.",
+  "imageLicense": null,
+  "terminalCount": 5,
+  "terminals": [
+    {
+      "id": "L",
+      "label": "L",
+      "kind": "power",
+      "side": "top",
+      "position": {
+        "x": 0.3913,
+        "y": 0.0536
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "N",
+      "label": "N",
+      "kind": "neutral",
+      "side": "top",
+      "position": {
+        "x": 0.6087,
+        "y": 0.0536
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "PE",
+      "label": "PE",
+      "kind": "earth",
+      "side": "right",
+      "position": {
+        "x": 0.9348,
+        "y": 0.5
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "+24V",
+      "label": "+24V",
+      "kind": "dc-positive",
+      "side": "bottom",
+      "position": {
+        "x": 0.3913,
+        "y": 0.9464
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "0V",
+      "label": "0V",
+      "kind": "dc-negative",
+      "side": "bottom",
+      "position": {
+        "x": 0.6087,
+        "y": 0.9464
+      },
+      "connectionType": "screw"
+    }
+  ]
+}

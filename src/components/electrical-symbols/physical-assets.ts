@@ -1,0 +1,486 @@
+import type { ComponentDefinition } from '@/types/component';
+
+/** Aset fisik komponen yang tersedia di public/component-assets. */
+const PHYSICAL_ASSETS: Record<string, string> = {
+  'mcb-1p': '/component-assets/mcb-1p/physical.png',
+  'mcb-2p': '/component-assets/mcb-2p/physical.png',
+  'mcb-3p': '/component-assets/mcb-3p/physical.png',
+  'mcb-4p': '/component-assets/mcb-4p/physical.png',
+  'mccb-3p': '/component-assets/mccb-3p/physical.png',
+  'rccb-2p': '/component-assets/rccb-2p/physical.png',
+  'rccb-4p': '/component-assets/rccb-4p/physical.png',
+  'rcbo-2p': '/component-assets/rcbo-2p/physical.png',
+  'mpcb-3p': '/component-assets/mpcb-3p/physical.png',
+  'main-switch-3p': '/component-assets/main-switch-3p/physical.png',
+  'fuse-1p': '/component-assets/fuse-1p/physical.png',
+  'tor-3p': '/component-assets/tor-3p/physical.png',
+  'spd-1p': '/component-assets/spd-1p/physical.png',
+  'pb-start-no': '/component-assets/pb-start-no/physical.svg',
+  'pb-stop-nc': '/component-assets/pb-stop-nc/physical.svg',
+  'estop': '/component-assets/estop/physical.svg',
+  'pb-jog': '/component-assets/pb-jog/physical.svg',
+  'pb-reset': '/component-assets/pb-reset/physical.svg',
+  'selector-switch': '/component-assets/selector-switch/physical.svg',
+  'limit-switch': '/component-assets/limit-switch/physical.svg',
+  'contactor-3p': '/component-assets/contactor-3p/physical.svg',
+  'relay-aux': '/component-assets/relay-aux/physical.svg',
+  'timer-on-delay': '/component-assets/timer-on-delay/physical.svg',
+  'timer-off-delay': '/component-assets/timer-off-delay/physical.svg',
+  'star-delta-timer': '/component-assets/star-delta-timer/physical.svg',
+  'switch-single': '/component-assets/switch-single/physical.svg',
+  'switch-double': '/component-assets/switch-double/physical.svg',
+  'switch-two-way': '/component-assets/switch-two-way/physical.svg',
+  'switch-intermediate': '/component-assets/switch-intermediate/physical.svg',
+  'dimmer': '/component-assets/dimmer/physical.svg',
+  'timer-switch': '/component-assets/timer-switch/physical.svg',
+  'photocell': '/component-assets/photocell/physical.svg',
+  'motion-sensor': '/component-assets/motion-sensor/physical.svg',
+  'motor-3p-6t': '/component-assets/motor-3p-6t/physical.svg',
+  'motor-3p-3t': '/component-assets/motor-3p-3t/physical.svg',
+  'motor-1p': '/component-assets/motor-1p/physical.svg',
+  'vfd-3p': '/component-assets/vfd-3p/physical.svg',
+  'soft-starter-3p': '/component-assets/soft-starter-3p/physical.svg',
+  'multimeter': '/component-assets/multimeter/physical.svg',
+  'voltmeter': '/component-assets/voltmeter/physical.svg',
+  'ammeter': '/component-assets/ammeter/physical.svg',
+  'energy-meter-1p': '/component-assets/energy-meter-1p/physical.svg',
+  'socket-1p': '/component-assets/socket-1p/physical.svg',
+  'socket-earthed': '/component-assets/socket-earthed/physical.svg',
+  'socket-industrial-3p': '/component-assets/socket-industrial-3p/physical.svg',
+  'plug-earthed': '/component-assets/plug-earthed/physical.svg',
+  'junction-box': '/component-assets/junction-box/physical.svg',
+  'ac-1p-source': '/component-assets/ac-1p-source/physical.svg',
+  'ac-3p-source': '/component-assets/ac-3p-source/physical.svg',
+  'dc-supply': '/component-assets/dc-supply/physical.svg',
+  'power-supply-24v': '/component-assets/power-supply-24v/physical.svg',
+  'control-transformer': '/component-assets/control-transformer/physical.svg',
+  'battery': '/component-assets/battery/physical.svg',
+  'solar-panel': '/component-assets/solar-panel/physical.svg',
+  'generator-3p': '/component-assets/generator-3p/physical.svg',
+  'ups-1p': '/component-assets/ups-1p/physical.svg',
+  'terminal-block': '/component-assets/terminal-block/physical.svg',
+  'plc-basic': '/component-assets/plc-basic/physical.svg',
+  'float-switch': '/component-assets/float-switch/physical.svg',
+  'pressure-switch': '/component-assets/pressure-switch/physical.svg',
+  'temperature-sensor': '/component-assets/temperature-sensor/physical.svg',
+  'solenoid-valve': '/component-assets/solenoid-valve/physical.svg',
+  'proximity-sensor': '/component-assets/proximity-sensor/physical.svg',
+  'photoelectric-sensor': '/component-assets/photoelectric-sensor/physical.svg',
+  'busbar-phase': '/component-assets/busbar-phase/physical.svg',
+  'busbar-neutral': '/component-assets/busbar-neutral/physical.svg',
+  'earth-bar': '/component-assets/earth-bar/physical.svg',
+  'lamp-led': '/component-assets/lamp-led/physical.svg',
+  'lamp-incandescent': '/component-assets/lamp-incandescent/physical.svg',
+  'lamp-fluorescent': '/component-assets/lamp-fluorescent/physical.svg',
+  'downlight': '/component-assets/downlight/physical.svg',
+  'emergency-lamp': '/component-assets/emergency-lamp/physical.svg',
+  'street-light': '/component-assets/street-light/physical.svg',
+};
+
+export function getPhysicalAsset(def: ComponentDefinition): string | undefined {
+  return PHYSICAL_ASSETS[def.type];
+}
+
+
+/** Posisi baut terminal untuk PNG yang tidak memakai layout tepi standar. */
+const PNG_TERMINALS: Record<string, { imageSize: { width: number; height: number }; terminals: Record<string, { x: number; y: number }> }> = {
+  "fuse-1p": {
+    "imageSize": {
+      "width": 1280,
+      "height": 1280
+    },
+    "terminals": {
+      "1": {
+        "x": 0.5,
+        "y": 0.1607
+      },
+      "2": {
+        "x": 0.5,
+        "y": 0.8339
+      }
+    }
+  },
+  "main-switch-3p": {
+    "imageSize": {
+      "width": 1280,
+      "height": 1280
+    },
+    "terminals": {
+      "1": {
+        "x": 0.2946,
+        "y": 0.1607
+      },
+      "2": {
+        "x": 0.2946,
+        "y": 0.8339
+      },
+      "3": {
+        "x": 0.5,
+        "y": 0.1607
+      },
+      "4": {
+        "x": 0.5,
+        "y": 0.8339
+      },
+      "5": {
+        "x": 0.7054,
+        "y": 0.1607
+      },
+      "6": {
+        "x": 0.7054,
+        "y": 0.8339
+      }
+    }
+  },
+  "mcb-2p": {
+    "imageSize": {
+      "width": 1280,
+      "height": 1280
+    },
+    "terminals": {
+      "1": {
+        "x": 0.3973,
+        "y": 0.1607
+      },
+      "2": {
+        "x": 0.3973,
+        "y": 0.8339
+      },
+      "3": {
+        "x": 0.6027,
+        "y": 0.1607
+      },
+      "4": {
+        "x": 0.6027,
+        "y": 0.8339
+      }
+    }
+  },
+  "mcb-3p": {
+    "imageSize": {
+      "width": 1280,
+      "height": 1280
+    },
+    "terminals": {
+      "1": {
+        "x": 0.2946,
+        "y": 0.1607
+      },
+      "2": {
+        "x": 0.2946,
+        "y": 0.8339
+      },
+      "3": {
+        "x": 0.5,
+        "y": 0.1607
+      },
+      "4": {
+        "x": 0.5,
+        "y": 0.8339
+      },
+      "5": {
+        "x": 0.7054,
+        "y": 0.1607
+      },
+      "6": {
+        "x": 0.7054,
+        "y": 0.8339
+      }
+    }
+  },
+  "mcb-4p": {
+    "imageSize": {
+      "width": 1280,
+      "height": 1280
+    },
+    "terminals": {
+      "1": {
+        "x": 0.207,
+        "y": 0.1775
+      },
+      "2": {
+        "x": 0.207,
+        "y": 0.8174
+      },
+      "3": {
+        "x": 0.4023,
+        "y": 0.1775
+      },
+      "4": {
+        "x": 0.4023,
+        "y": 0.8174
+      },
+      "5": {
+        "x": 0.5977,
+        "y": 0.1775
+      },
+      "6": {
+        "x": 0.5977,
+        "y": 0.8174
+      },
+      "7": {
+        "x": 0.793,
+        "y": 0.1775
+      },
+      "8": {
+        "x": 0.793,
+        "y": 0.8174
+      }
+    }
+  },
+  "mccb-3p": {
+    "imageSize": {
+      "width": 1280,
+      "height": 1280
+    },
+    "terminals": {
+      "1": {
+        "x": 0.3047,
+        "y": 0.181
+      },
+      "2": {
+        "x": 0.3047,
+        "y": 0.819
+      },
+      "3": {
+        "x": 0.5,
+        "y": 0.181
+      },
+      "4": {
+        "x": 0.5,
+        "y": 0.819
+      },
+      "5": {
+        "x": 0.6953,
+        "y": 0.181
+      },
+      "6": {
+        "x": 0.6953,
+        "y": 0.819
+      }
+    }
+  },
+  "mpcb-3p": {
+    "imageSize": {
+      "width": 1280,
+      "height": 1280
+    },
+    "terminals": {
+      "1": {
+        "x": 0.3504,
+        "y": 0.1792
+      },
+      "2": {
+        "x": 0.3504,
+        "y": 0.8208
+      },
+      "3": {
+        "x": 0.5,
+        "y": 0.1792
+      },
+      "4": {
+        "x": 0.5,
+        "y": 0.8208
+      },
+      "5": {
+        "x": 0.6496,
+        "y": 0.1792
+      },
+      "6": {
+        "x": 0.6496,
+        "y": 0.8208
+      }
+    }
+  },
+  "rcbo-2p": {
+    "imageSize": {
+      "width": 1280,
+      "height": 1280
+    },
+    "terminals": {
+      "1": {
+        "x": 0.3973,
+        "y": 0.1607
+      },
+      "2": {
+        "x": 0.3973,
+        "y": 0.8339
+      },
+      "3": {
+        "x": 0.6027,
+        "y": 0.1607
+      },
+      "4": {
+        "x": 0.6027,
+        "y": 0.8339
+      }
+    }
+  },
+  "rccb-2p": {
+    "imageSize": {
+      "width": 1280,
+      "height": 1280
+    },
+    "terminals": {
+      "1": {
+        "x": 0.3973,
+        "y": 0.1607
+      },
+      "2": {
+        "x": 0.3973,
+        "y": 0.8339
+      },
+      "3": {
+        "x": 0.6027,
+        "y": 0.1607
+      },
+      "4": {
+        "x": 0.6027,
+        "y": 0.8339
+      }
+    }
+  },
+  "rccb-4p": {
+    "imageSize": {
+      "width": 1280,
+      "height": 1280
+    },
+    "terminals": {
+      "1": {
+        "x": 0.207,
+        "y": 0.1775
+      },
+      "2": {
+        "x": 0.207,
+        "y": 0.8174
+      },
+      "3": {
+        "x": 0.4023,
+        "y": 0.1775
+      },
+      "4": {
+        "x": 0.4023,
+        "y": 0.8174
+      },
+      "5": {
+        "x": 0.5977,
+        "y": 0.1775
+      },
+      "6": {
+        "x": 0.5977,
+        "y": 0.8174
+      },
+      "7": {
+        "x": 0.793,
+        "y": 0.1775
+      },
+      "8": {
+        "x": 0.793,
+        "y": 0.8174
+      }
+    }
+  },
+  "spd-1p": {
+    "imageSize": {
+      "width": 1280,
+      "height": 1280
+    },
+    "terminals": {
+      "L": {
+        "x": 0.3973,
+        "y": 0.1607
+      },
+      "N": {
+        "x": 0.6027,
+        "y": 0.1607
+      },
+      "PE1": {
+        "x": 0.3973,
+        "y": 0.8339
+      },
+      "PE2": {
+        "x": 0.6027,
+        "y": 0.8339
+      }
+    }
+  },
+  "tor-3p": {
+    "imageSize": {
+      "width": 1280,
+      "height": 1280
+    },
+    "terminals": {
+      "1": {
+        "x": 0.2939,
+        "y": 0.1792
+      },
+      "2": {
+        "x": 0.2939,
+        "y": 0.8208
+      },
+      "3": {
+        "x": 0.4202,
+        "y": 0.1792
+      },
+      "4": {
+        "x": 0.4202,
+        "y": 0.8208
+      },
+      "5": {
+        "x": 0.5465,
+        "y": 0.1792
+      },
+      "6": {
+        "x": 0.5465,
+        "y": 0.8208
+      },
+      "95": {
+        "x": 0.6729,
+        "y": 0.1792
+      },
+      "96": {
+        "x": 0.6729,
+        "y": 0.8208
+      },
+      "97": {
+        "x": 0.756,
+        "y": 0.1792
+      },
+      "98": {
+        "x": 0.756,
+        "y": 0.8208
+      }
+    }
+  },
+  "mcb-1p": {
+    "imageSize": {
+      "width": 1400,
+      "height": 1400
+    },
+    "terminals": {
+      "1": {
+        "x": 0.5,
+        "y": 0.16
+      },
+      "2": {
+        "x": 0.5,
+        "y": 0.84
+      }
+    }
+  }
+};
+
+export function getPhysicalLayout(def: ComponentDefinition) {
+  const meta = PNG_TERMINALS[def.type];
+  if (!meta) return def.layout;
+  const scale = Math.min(def.layout.width / meta.imageSize.width, def.layout.height / meta.imageSize.height);
+  const renderedWidth = meta.imageSize.width * scale;
+  const renderedHeight = meta.imageSize.height * scale;
+  const offsetX = (def.layout.width - renderedWidth) / 2;
+  const offsetY = (def.layout.height - renderedHeight) / 2;
+  const terminals = { ...def.layout.terminals };
+  for (const [id, point] of Object.entries(meta.terminals)) {
+    terminals[id] = { x: offsetX + point.x * renderedWidth, y: offsetY + point.y * renderedHeight };
+  }
+  return { ...def.layout, terminals };
+}

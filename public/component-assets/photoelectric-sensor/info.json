@@ -1,0 +1,49 @@
+{
+  "id": "photoelectric-sensor",
+  "name": "Photoelectric Sensor",
+  "category": "automation",
+  "image": "physical.svg",
+  "imageSize": {
+    "width": 92,
+    "height": 112
+  },
+  "imageType": "ai-generated-illustration",
+  "imageSource": "Ilustrasi vektor generik ElectroLab dari SVG. Bukan foto produk pabrikan atau representasi merek/model tertentu.",
+  "imageLicense": null,
+  "terminalCount": 3,
+  "terminals": [
+    {
+      "id": "BN",
+      "label": "+",
+      "kind": "dc-positive",
+      "side": "top",
+      "position": {
+        "x": 0.3913,
+        "y": 0.0536
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "BU",
+      "label": "0V",
+      "kind": "dc-negative",
+      "side": "top",
+      "position": {
+        "x": 0.6087,
+        "y": 0.0536
+      },
+      "connectionType": "screw"
+    },
+    {
+      "id": "BK",
+      "label": "OUT",
+      "kind": "signal",
+      "side": "bottom",
+      "position": {
+        "x": 0.5,
+        "y": 0.9464
+      },
+      "connectionType": "screw"
+    }
+  ]
+}
