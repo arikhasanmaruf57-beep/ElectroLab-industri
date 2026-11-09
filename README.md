@@ -84,3 +84,6 @@ Test katalog memastikan ID terminal unik, simbol merujuk terminal yang ada, dan 
 - **Kompatibilitas** memeriksa *jenis* terminal. Apakah suatu sambungan menimbulkan hubung singkat (mis. L–N lewat
   beban vs tanpa beban) dinilai solver di Phase 3, sesuai spesifikasi.
 - Belum ada: Save/Load multi-proyek, Supabase, simulasi, PDF, ekspor/impor (semua Phase 2+).
+## Circuit Studio (fondasi awal)
+
+Circuit Studio tersedia melalui menu baru dan rute /circuit-studio. Modul ini memperkenalkan tiga mode desain: Schematic, Breadboard, dan Panel Layout, serta memakai katalog komponen ElectroLab yang sudah ada. Pada tahap awal ini, pemilihan komponen hanya membuat daftar desain sementara di sesi browser; kanvas koordinat, wiring editor, penyimpanan proyek, dan impor/ekspor Fritzing belum diimplementasikan. Rencana teknis dan target kompatibilitas ada di docs/CIRCUIT-STUDIO-ARCHITECTURE.md.
